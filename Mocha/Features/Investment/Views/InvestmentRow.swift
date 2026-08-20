@@ -10,10 +10,11 @@ struct InvestmentRow: View {
     var body: some View {
         HStack(spacing: 14) {
             Image(systemName: investment.type.icon)
-                .font(.title3).foregroundStyle(investment.type.color)
+                .font(.title3)
+                .foregroundStyle(MochaTheme.themeForeground)
                 .frame(width: 44, height: 44)
-                .foregroundStyle(.black)
                 .background(MochaTheme.yellow, in: RoundedRectangle(cornerRadius: 12))
+                .overlay { RoundedRectangle(cornerRadius: 12).stroke(MochaTheme.themeBorder, lineWidth: 1) }
             VStack(alignment: .leading, spacing: 5) {
                 Text(investment.name).font(.headline).lineLimit(1)
                 Text(subtitle)
@@ -21,10 +22,12 @@ struct InvestmentRow: View {
             }
             Spacer()
             VStack(alignment: .trailing, spacing: 5) {
-                Text(CurrencyFormatting.cny(investment.marketValue)).font(.headline)
-                Text("\(investment.profit >= 0 ? "+" : "")\(CurrencyFormatting.cny(investment.profit))")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(investment.profit >= 0 ? .red : .green)
+                Text(CurrencyFormatting.cny(investment.holdingAmount)).font(.headline)
+                if investment.type != .cash {
+                    Text("\(investment.effectiveTotalProfit >= 0 ? "+" : "")\(CurrencyFormatting.cny(investment.effectiveTotalProfit))")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(investment.effectiveTotalProfit >= 0 ? .red : .green)
+                }
             }
         }
         .padding(16)

@@ -10,7 +10,6 @@ enum RebalanceDirection: String, CaseIterable, Identifiable {
 struct RebalanceAllocation: Identifiable {
     let investment: Investment
     let amount: Decimal
-    let quantity: Decimal
     var id: PersistentIdentifier { investment.persistentModelID }
 
     func recurringDailyAmount(tradingDayCount: Int) -> Decimal? {
@@ -39,7 +38,7 @@ enum RebalancePlanner {
     ) -> RebalancePlan {
         let selected = investments.filter { selectedIDs.contains($0.persistentModelID) }
         let portfolioValues = Dictionary(grouping: investments, by: \.type)
-            .mapValues { $0.reduce(0) { $0 + $1.marketValue } }
+            .mapValues { $0.reduce(0) { $0 + $1.holdingAmount } }
         let selectedByType = Dictionary(grouping: selected, by: \.type)
         let eligibleTypes = Set(selectedByType.keys)
         let typeAmounts = allocateByType(
@@ -60,10 +59,7 @@ enum RebalancePlanner {
             for component in components {
                 let componentAmount = componentAmounts[component.persistentModelID] ?? 0
                 guard componentAmount > 0 else { continue }
-                let quantity = component.type == .cash
-                    ? componentAmount
-                    : (component.currentPrice > 0 ? componentAmount / component.currentPrice : 0)
-                allocations.append(RebalanceAllocation(investment: component, amount: componentAmount, quantity: quantity))
+                allocations.append(RebalanceAllocation(investment: component, amount: componentAmount))
             }
         }
 
@@ -138,7 +134,7 @@ enum RebalancePlanner {
             var nextActive: [Investment] = []
             for component in active {
                 let capacity = direction == .sell
-                    ? max(0, component.marketValue - (result[component.persistentModelID] ?? 0))
+                    ? max(0, component.holdingAmount - (result[component.persistentModelID] ?? 0))
                     : share
                 let value = min(share, capacity)
                 result[component.persistentModelID, default: 0] += value

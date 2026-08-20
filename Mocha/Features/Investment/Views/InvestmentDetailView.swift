@@ -10,11 +10,13 @@ struct InvestmentDetailView: View {
             Section {
                 VStack(spacing: 14) {
                     if investment.type == .cash {
-                        metric("持有量", CurrencyFormatting.cny(investment.quantity))
+                        metric("持仓金额", CurrencyFormatting.cny(investment.holdingAmount))
                     } else {
-                        HStack { metric("持仓数量", investment.quantity.formatted()); Spacer(); metric("当前单价", CurrencyFormatting.cny(investment.currentPrice), alignment: .trailing) }
-                        Divider()
-                        HStack { metric("持仓市值", CurrencyFormatting.cny(investment.marketValue)); Spacer(); metric("当前盈亏", signed(investment.profit), alignment: .trailing) }
+                        HStack {
+                            metric("持仓金额", CurrencyFormatting.cny(investment.holdingAmount))
+                            Spacer()
+                            metric("总盈亏", signed(investment.effectiveTotalProfit), alignment: .trailing)
+                        }
                     }
                 }
                 .padding(.vertical, 8)

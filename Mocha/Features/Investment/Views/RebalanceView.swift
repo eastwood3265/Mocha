@@ -46,9 +46,7 @@ struct RebalanceView: View {
 
                 Section {
                     ForEach(investments) { investment in
-                        let selectable = investment.type == .cash || investment.currentPrice > 0
                         Button {
-                            guard selectable else { return }
                             if selectedIDs.contains(investment.persistentModelID) {
                                 selectedIDs.remove(investment.persistentModelID)
                             } else {
@@ -57,21 +55,18 @@ struct RebalanceView: View {
                         } label: {
                             HStack {
                                 Image(systemName: investment.type.icon)
-                                    .foregroundStyle(.black)
+                                    .foregroundStyle(MochaTheme.themeForeground)
                                     .frame(width: 30, height: 30)
                                     .background(MochaTheme.yellow, in: RoundedRectangle(cornerRadius: 8))
+                                    .overlay { RoundedRectangle(cornerRadius: 8).stroke(MochaTheme.themeBorder, lineWidth: 1) }
                                 VStack(alignment: .leading, spacing: 3) {
-                                    Text(investment.name).foregroundStyle(selectable ? .primary : .secondary)
-                                    Text("\(investment.type.rawValue) · 市值 \(CurrencyFormatting.cny(investment.marketValue))")
+                                    Text(investment.name).foregroundStyle(.primary)
+                                    Text("\(investment.type.rawValue) · 持仓 \(CurrencyFormatting.cny(investment.holdingAmount))")
                                         .font(.caption).foregroundStyle(.secondary)
                                 }
                                 Spacer()
-                                if !selectable {
-                                    Text("缺少单价").font(.caption).foregroundStyle(.orange)
-                                } else {
-                                    Image(systemName: selectedIDs.contains(investment.persistentModelID) ? "checkmark.circle.fill" : "circle")
-                                        .foregroundStyle(selectedIDs.contains(investment.persistentModelID) ? MochaTheme.yellow : .secondary)
-                                }
+                                Image(systemName: selectedIDs.contains(investment.persistentModelID) ? "checkmark.circle.fill" : "circle")
+                                    .foregroundStyle(selectedIDs.contains(investment.persistentModelID) ? MochaTheme.yellow : .secondary)
                             }
                         }
                         .buttonStyle(.plain)
@@ -97,7 +92,7 @@ struct RebalanceView: View {
                     if amount <= 0 || selectedIDs.isEmpty {
                         ContentUnavailableView("等待计算", systemImage: "scale.3d", description: Text("输入金额并至少选择一个投资项。"))
                     } else if plan.allocations.isEmpty {
-                        ContentUnavailableView("无法分配", systemImage: "exclamationmark.triangle", description: Text("卖出金额可能超过所选持仓，或所选成分缺少有效市值。"))
+                        ContentUnavailableView("无法分配", systemImage: "exclamationmark.triangle", description: Text("卖出金额可能超过所选持仓，或所选成分持仓金额为 0。"))
                     } else {
                         ForEach(plan.allocations) { allocation in
                             VStack(alignment: .leading, spacing: 8) {
@@ -112,11 +107,8 @@ struct RebalanceView: View {
                                 } else if isRecurring {
                                     LabeledContent("现金调整", value: "仅计入总体金额")
                                         .font(.subheadline)
-                                } else {
-                                    LabeledContent("操作数量", value: allocation.quantity.formatted(.number.precision(.fractionLength(0...4))))
-                                        .font(.subheadline)
                                 }
-                                Text("\(allocation.investment.type.rawValue) · 当前市值 \(CurrencyFormatting.cny(allocation.investment.marketValue))")
+                                Text("\(allocation.investment.type.rawValue) · 当前持仓 \(CurrencyFormatting.cny(allocation.investment.holdingAmount))")
                                     .font(.caption).foregroundStyle(.secondary)
                             }
                             .padding(.vertical, 4)
@@ -144,7 +136,7 @@ struct RebalanceView: View {
     }
 
     private var selectableInvestments: [Investment] {
-        investments.filter { $0.type == .cash || $0.currentPrice > 0 }
+        investments
     }
 
     private var tradingDayDescription: String {

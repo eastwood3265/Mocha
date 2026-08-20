@@ -6,9 +6,8 @@ final class Investment {
     var name: String
     var code: String
     var typeRawValue: String
-    var quantity: Decimal = 0
-    var currentPrice: Decimal
-    var currentProfit: Decimal = 0
+    var holdingAmount: Decimal = 0
+    var totalProfit: Decimal = 0
     var note: String
     var createdAt: Date
     var updatedAt: Date
@@ -16,28 +15,28 @@ final class Investment {
 
     var type: InvestmentType {
         get { InvestmentType(rawValue: typeRawValue) ?? .bond }
-        set { typeRawValue = newValue.rawValue }
+        set {
+            typeRawValue = newValue.rawValue
+            if newValue == .cash { totalProfit = 0 }
+        }
     }
 
-    var marketValue: Decimal { type == .cash ? quantity : quantity * currentPrice }
-    var profit: Decimal { type == .cash ? 0 : currentProfit }
+    var effectiveTotalProfit: Decimal { type == .cash ? 0 : totalProfit }
 
     init(
         name: String,
         code: String = "",
         type: InvestmentType,
-        quantity: Decimal,
-        currentPrice: Decimal,
-        currentProfit: Decimal,
+        holdingAmount: Decimal,
+        totalProfit: Decimal,
         note: String = "",
         storageLocation: StorageLocation? = nil
     ) {
         self.name = name
         self.code = code
         self.typeRawValue = type.rawValue
-        self.quantity = quantity
-        self.currentPrice = currentPrice
-        self.currentProfit = currentProfit
+        self.holdingAmount = holdingAmount
+        self.totalProfit = type == .cash ? 0 : totalProfit
         self.note = note
         self.createdAt = .now
         self.updatedAt = .now

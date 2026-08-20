@@ -7,6 +7,7 @@ struct InvestmentDashboardView: View {
     @State private var selectedType: InvestmentType?
     @State private var showingInvestmentEditor = false
     @State private var showingRebalance = false
+    private let amountModelResetKey = "investmentAmountModelResetCompleted"
 
     private var filtered: [Investment] {
         guard let selectedType else { return investments }
@@ -52,6 +53,7 @@ struct InvestmentDashboardView: View {
             }
             .sheet(isPresented: $showingInvestmentEditor) { InvestmentEditorView() }
             .sheet(isPresented: $showingRebalance) { RebalanceView(investments: investments) }
+            .onAppear(perform: resetLegacyInvestmentsIfNeeded)
         }
         .tint(MochaTheme.primaryText)
     }
@@ -64,6 +66,17 @@ struct InvestmentDashboardView: View {
                     FilterChip(title: type.rawValue, icon: type.icon, selected: selectedType == type) { selectedType = type }
                 }
             }
+        }
+    }
+
+    private func resetLegacyInvestmentsIfNeeded() {
+        guard !UserDefaults.standard.bool(forKey: amountModelResetKey) else { return }
+        investments.forEach(modelContext.delete)
+        do {
+            try modelContext.save()
+            UserDefaults.standard.set(true, forKey: amountModelResetKey)
+        } catch {
+            modelContext.rollback()
         }
     }
 }

@@ -3,6 +3,6 @@ import Foundation
 struct PortfolioSummary {
     let investments: [Investment]
 
-    var marketValue: Decimal { investments.reduce(0) { $0 + $1.marketValue } }
-    var currentProfit: Decimal { investments.reduce(0) { $0 + $1.profit } }
+    var holdingAmount: Decimal { investments.reduce(0) { $0 + $1.holdingAmount } }
+    var totalProfit: Decimal { investments.reduce(0) { $0 + $1.effectiveTotalProfit } }
 }

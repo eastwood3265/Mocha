@@ -10,9 +10,8 @@ struct InvestmentEditorView: View {
     @State private var name: String
     @State private var code: String
     @State private var type: InvestmentType
-    @State private var quantity: Decimal
-    @State private var currentPrice: Decimal
-    @State private var currentProfit: Decimal
+    @State private var holdingAmount: Decimal
+    @State private var totalProfit: Decimal
     @State private var note: String
     @State private var selectedLocation: StorageLocation?
 
@@ -21,9 +20,8 @@ struct InvestmentEditorView: View {
         _name = State(initialValue: investment?.name ?? "")
         _code = State(initialValue: investment?.code ?? "")
         _type = State(initialValue: investment?.type ?? .bond)
-        _quantity = State(initialValue: investment?.quantity ?? 0)
-        _currentPrice = State(initialValue: investment?.currentPrice ?? 0)
-        _currentProfit = State(initialValue: investment?.currentProfit ?? 0)
+        _holdingAmount = State(initialValue: investment?.holdingAmount ?? 0)
+        _totalProfit = State(initialValue: investment?.totalProfit ?? 0)
         _note = State(initialValue: investment?.note ?? "")
         _selectedLocation = State(initialValue: investment?.storageLocation)
     }
@@ -41,12 +39,10 @@ struct InvestmentEditorView: View {
                             TextField("可选", text: $code).textInputAutocapitalization(.characters).multilineTextAlignment(.trailing)
                         }
                     }
-                    DecimalField(type == .cash ? "持有量" : "当前持仓数量", value: $quantity)
+                    DecimalField("持仓金额", value: $holdingAmount)
                     if type != .cash {
-                        DecimalField("当前单价", value: $currentPrice)
-                        DecimalField("当前盈亏", value: $currentProfit)
+                        DecimalField("总盈亏", value: $totalProfit)
                     }
-                    LabeledContent("当前市值", value: CurrencyFormatting.cny(type == .cash ? quantity : quantity * currentPrice))
                 }
                 Section("存放处") {
                     Picker("关联账户", selection: $selectedLocation) {
@@ -67,7 +63,7 @@ struct InvestmentEditorView: View {
                 ToolbarItem(placement: .cancellationAction) { Button("取消") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("保存", action: save)
-                        .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty || quantity < 0 || (type != .cash && currentPrice < 0))
+                        .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty || holdingAmount < 0)
                 }
             }
         }
@@ -77,12 +73,14 @@ struct InvestmentEditorView: View {
         if let investment {
             investment.name = name.trimmingCharacters(in: .whitespacesAndNewlines)
             investment.code = type == .cash ? "" : code.trimmingCharacters(in: .whitespacesAndNewlines)
-            investment.type = type; investment.quantity = quantity
-            investment.currentPrice = type == .cash ? 1 : currentPrice
-            investment.currentProfit = type == .cash ? 0 : currentProfit
-            investment.note = note; investment.storageLocation = selectedLocation; investment.updatedAt = .now
+            investment.type = type
+            investment.holdingAmount = holdingAmount
+            investment.totalProfit = type == .cash ? 0 : totalProfit
+            investment.note = note
+            investment.storageLocation = selectedLocation
+            investment.updatedAt = .now
         } else {
-            modelContext.insert(Investment(name: name.trimmingCharacters(in: .whitespacesAndNewlines), code: type == .cash ? "" : code, type: type, quantity: quantity, currentPrice: type == .cash ? 1 : currentPrice, currentProfit: type == .cash ? 0 : currentProfit, note: note, storageLocation: selectedLocation))
+            modelContext.insert(Investment(name: name.trimmingCharacters(in: .whitespacesAndNewlines), code: type == .cash ? "" : code, type: type, holdingAmount: holdingAmount, totalProfit: type == .cash ? 0 : totalProfit, note: note, storageLocation: selectedLocation))
         }
         dismiss()
     }

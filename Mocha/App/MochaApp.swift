@@ -5,7 +5,14 @@ import SwiftUI
 struct MochaApp: App {
     private let container: ModelContainer = {
         do {
-            return try ModelContainer(for: Investment.self, StorageLocation.self, Budget.self, BudgetEntry.self)
+            return try ModelContainer(
+                for: Investment.self,
+                StorageLocation.self,
+                Budget.self,
+                BudgetEntry.self,
+                SavingsBucket.self,
+                SavingsBucketEntry.self
+            )
         } catch {
             fatalError("无法创建本地数据库：\(error.localizedDescription)")
         }
@@ -22,6 +29,7 @@ struct MochaApp: App {
 }
 
 private struct MochaRootView: View {
+    @AppStorage(AppThemeColor.storageKey) private var selectedThemeRawValue = AppThemeColor.lemon.rawValue
     @State private var selection: Tab = .investments
 
     var body: some View {
@@ -37,13 +45,24 @@ private struct MochaRootView: View {
             BudgetDashboardView()
                 .tabItem { Label("预算", systemImage: "calendar.badge.clock") }
                 .tag(Tab.budgets)
+
+            GoldenBucketDashboardView()
+                .tabItem { Label("金桶", systemImage: "banknote.fill") }
+                .tag(Tab.goldenBuckets)
+
+            SettingsDashboardView()
+                .tabItem { Label("设置", systemImage: "gearshape.fill") }
+                .tag(Tab.settings)
         }
         .tint(MochaTheme.primaryText)
+        .id(selectedThemeRawValue)
     }
 
     private enum Tab: Hashable {
         case investments
         case storageLocations
         case budgets
+        case goldenBuckets
+        case settings
     }
 }

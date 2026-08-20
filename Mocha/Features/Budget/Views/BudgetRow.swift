@@ -15,9 +15,10 @@ struct BudgetRow: View {
             HStack(spacing: 10) {
                 Image(systemName: progress.budget.period.systemImage)
                     .font(.headline)
-                    .foregroundStyle(MochaTheme.primaryText)
+                    .foregroundStyle(MochaTheme.themeForeground)
                     .frame(width: 30, height: 30)
-                    .background(MochaTheme.yellow.opacity(0.75), in: Circle())
+                    .background(MochaTheme.yellow, in: Circle())
+                    .overlay { Circle().stroke(MochaTheme.themeBorder, lineWidth: 1) }
 
                 VStack(alignment: .leading, spacing: 3) {
                     Text(progress.budget.name)

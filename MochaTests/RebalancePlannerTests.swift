@@ -38,9 +38,9 @@ final class RebalancePlannerTests: XCTestCase {
         XCTAssertEqual(plan.allocatedAmount, 600)
     }
 
-    func testSameTypeComponentsSplitAmountEquallyAndCalculateQuantity() {
-        let first = Investment(name: "债券A", type: .bond, quantity: 10, currentPrice: 10, currentProfit: 0)
-        let second = Investment(name: "债券B", type: .bond, quantity: 20, currentPrice: 10, currentProfit: 0)
+    func testSameTypeComponentsSplitAmountEqually() {
+        let first = Investment(name: "债券A", type: .bond, holdingAmount: 100, totalProfit: 0)
+        let second = Investment(name: "债券B", type: .bond, holdingAmount: 200, totalProfit: 0)
         let items = [first, second]
         let plan = RebalancePlanner.makePlan(
             investments: items,
@@ -52,14 +52,13 @@ final class RebalancePlannerTests: XCTestCase {
 
         XCTAssertEqual(plan.allocations.count, 2)
         XCTAssertTrue(plan.allocations.allSatisfy { $0.amount == 50 })
-        XCTAssertTrue(plan.allocations.allSatisfy { $0.quantity == 5 })
     }
 
     func testCashHasNoRecurringDailyAmount() {
-        let cash = Investment(name: "现金", type: .cash, quantity: 100, currentPrice: 1, currentProfit: 0)
-        let bond = Investment(name: "债券", type: .bond, quantity: 10, currentPrice: 10, currentProfit: 0)
-        let cashAllocation = RebalanceAllocation(investment: cash, amount: 50, quantity: 50)
-        let bondAllocation = RebalanceAllocation(investment: bond, amount: 50, quantity: 5)
+        let cash = Investment(name: "现金", type: .cash, holdingAmount: 100, totalProfit: 0)
+        let bond = Investment(name: "债券", type: .bond, holdingAmount: 100, totalProfit: 0)
+        let cashAllocation = RebalanceAllocation(investment: cash, amount: 50)
+        let bondAllocation = RebalanceAllocation(investment: bond, amount: 50)
 
         XCTAssertNil(cashAllocation.recurringDailyAmount(tradingDayCount: 5))
         XCTAssertEqual(bondAllocation.recurringDailyAmount(tradingDayCount: 5), 10)
@@ -83,10 +82,10 @@ final class RebalancePlannerTests: XCTestCase {
 
     private func makeFourTypes() -> [Investment] {
         [
-            Investment(name: "债券", type: .bond, quantity: 10, currentPrice: 10, currentProfit: 0),
-            Investment(name: "股票", type: .stock, quantity: 20, currentPrice: 10, currentProfit: 0),
-            Investment(name: "黄金", type: .gold, quantity: 30, currentPrice: 10, currentProfit: 0),
-            Investment(name: "现金", type: .cash, quantity: 400, currentPrice: 1, currentProfit: 0)
+            Investment(name: "债券", type: .bond, holdingAmount: 100, totalProfit: 0),
+            Investment(name: "股票", type: .stock, holdingAmount: 200, totalProfit: 0),
+            Investment(name: "黄金", type: .gold, holdingAmount: 300, totalProfit: 0),
+            Investment(name: "现金", type: .cash, holdingAmount: 400, totalProfit: 0)
         ]
     }
 }
