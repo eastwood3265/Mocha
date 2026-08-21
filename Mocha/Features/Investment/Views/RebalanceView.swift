@@ -33,7 +33,7 @@ struct RebalanceView: View {
                         ForEach(RebalanceDirection.allCases) { Text($0.rawValue).tag($0) }
                     }
                     .pickerStyle(.segmented)
-                    DecimalField("操作金额", value: $amount)
+                    AmountField("操作金额", value: $amount)
                     Toggle("按交易日定投", isOn: $isRecurring)
                         .tint(MochaTheme.yellow)
                 } header: {

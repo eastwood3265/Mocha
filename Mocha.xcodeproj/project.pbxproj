@@ -33,6 +33,10 @@
 		C1010000000000000000000A /* SavingsBucketRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1020000000000000000000A /* SavingsBucketRow.swift */; };
 		C10400000000000000000001 /* SavingsBucketProgressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10500000000000000000001 /* SavingsBucketProgressTests.swift */; };
 		C10400000000000000000002 /* SavingsBucketPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10500000000000000000002 /* SavingsBucketPersistenceTests.swift */; };
+		D10100000000000000000001 /* AmountField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10200000000000000000001 /* AmountField.swift */; };
+		D10100000000000000000002 /* ProfitPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10200000000000000000002 /* ProfitPresentation.swift */; };
+		D10400000000000000000001 /* AmountInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10500000000000000000001 /* AmountInputFormatterTests.swift */; };
+		D10400000000000000000002 /* ProfitPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10500000000000000000002 /* ProfitPresentationTests.swift */; };
 		23379E2716D4C225D811DDC8 /* PortfolioSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5DC6ED4DCA96D02EB27AE1 /* PortfolioSummary.swift */; };
 		38AADE5A6A7B1453A89ED6DA /* RebalancePlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0375D1CACC99480D38B3D707 /* RebalancePlannerTests.swift */; };
 		4203F3999F3949864A0B956E /* StorageLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10C03E7000BFBECED0D51D /* StorageLocation.swift */; };
@@ -91,6 +95,10 @@
 		C1020000000000000000000A /* SavingsBucketRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsBucketRow.swift; sourceTree = "<group>"; };
 		C10500000000000000000001 /* SavingsBucketProgressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsBucketProgressTests.swift; sourceTree = "<group>"; };
 		C10500000000000000000002 /* SavingsBucketPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsBucketPersistenceTests.swift; sourceTree = "<group>"; };
+		D10200000000000000000001 /* AmountField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountField.swift; sourceTree = "<group>"; };
+		D10200000000000000000002 /* ProfitPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitPresentation.swift; sourceTree = "<group>"; };
+		D10500000000000000000001 /* AmountInputFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputFormatterTests.swift; sourceTree = "<group>"; };
+		D10500000000000000000002 /* ProfitPresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitPresentationTests.swift; sourceTree = "<group>"; };
 		AB10C03E7000BFBECED0D51D /* StorageLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageLocation.swift; sourceTree = "<group>"; };
 		B0126F37E1CA5CF147DB0406 /* InvestmentDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentDashboardView.swift; sourceTree = "<group>"; };
 		B871CFFABFDEA1187B2DFD4D /* MochaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MochaApp.swift; sourceTree = "<group>"; };
@@ -172,8 +180,10 @@
 		9A2C03012806F76F38E0E7A8 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				D10200000000000000000001 /* AmountField.swift */,
 				672C046EFC412E0AC219AFD7 /* CurrencyFormatting.swift */,
 				50B27018ABB959A9790C1BFA /* LabeledNoteEditor.swift */,
+				D10200000000000000000002 /* ProfitPresentation.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -239,9 +249,11 @@
 		C462259D1D5B79E6DD1ED25D /* MochaTests */ = {
 			isa = PBXGroup;
 			children = (
+				D10500000000000000000001 /* AmountInputFormatterTests.swift */,
 				B0020000000000000000000D /* BudgetProgressTests.swift */,
 				B0020000000000000000000C /* BudgetPeriodTests.swift */,
 				CD7080E4FC98D393F472F7E5 /* PortfolioSummaryTests.swift */,
+				D10500000000000000000002 /* ProfitPresentationTests.swift */,
 				0375D1CACC99480D38B3D707 /* RebalancePlannerTests.swift */,
 				C10500000000000000000002 /* SavingsBucketPersistenceTests.swift */,
 				C10500000000000000000001 /* SavingsBucketProgressTests.swift */,
@@ -408,9 +420,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D10400000000000000000001 /* AmountInputFormatterTests.swift in Sources */,
 				B0010000000000000000000D /* BudgetProgressTests.swift in Sources */,
 				B0010000000000000000000C /* BudgetPeriodTests.swift in Sources */,
 				78899323FB683F6280AB0034 /* PortfolioSummaryTests.swift in Sources */,
+				D10400000000000000000002 /* ProfitPresentationTests.swift in Sources */,
 				38AADE5A6A7B1453A89ED6DA /* RebalancePlannerTests.swift in Sources */,
 				C10400000000000000000002 /* SavingsBucketPersistenceTests.swift in Sources */,
 				C10400000000000000000001 /* SavingsBucketProgressTests.swift in Sources */,
@@ -421,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D10100000000000000000001 /* AmountField.swift in Sources */,
 				B00100000000000000000009 /* ArchivedBudgetListView.swift in Sources */,
 				B00100000000000000000002 /* Budget.swift in Sources */,
 				B00100000000000000000005 /* BudgetDashboardView.swift in Sources */,
@@ -446,6 +461,7 @@
 				5D4F5A0F9AFB8D535F8260B1 /* MochaApp.swift in Sources */,
 				23379E2716D4C225D811DDC8 /* PortfolioSummary.swift in Sources */,
 				BE44B1613566639994B355D2 /* PortfolioSummaryCard.swift in Sources */,
+				D10100000000000000000002 /* ProfitPresentation.swift in Sources */,
 				51CD647BD966490673AF83DB /* RebalancePlanner.swift in Sources */,
 				5B22E092F7DB38BA7B6A3F64 /* RebalanceView.swift in Sources */,
 				C10100000000000000000001 /* SavingsBucket.swift in Sources */,

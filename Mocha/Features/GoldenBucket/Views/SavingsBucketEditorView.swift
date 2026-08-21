@@ -56,7 +56,7 @@ struct SavingsBucketEditorView: View {
                             .multilineTextAlignment(.trailing)
                     }
                     if bucket == nil {
-                        DecimalField("初始存入", value: $initialDeposit)
+                        AmountField("初始存入", value: $initialDeposit)
                     }
                 }
 
@@ -64,7 +64,7 @@ struct SavingsBucketEditorView: View {
                     Toggle("设置目标金额", isOn: $hasTarget)
                         .tint(MochaTheme.yellow)
                     if hasTarget {
-                        DecimalField("目标金额", value: $targetAmount)
+                        AmountField("目标金额", value: $targetAmount)
                         Toggle("设置截止日期", isOn: $hasDeadline)
                             .tint(MochaTheme.yellow)
                         if hasDeadline {

@@ -59,7 +59,7 @@ struct BudgetEditorView: View {
                             Label(period.title, systemImage: period.systemImage).tag(period)
                         }
                     }
-                    DecimalField("金额", value: $amount)
+                    AmountField("金额", value: $amount)
                 }
 
                 if let validationMessage {

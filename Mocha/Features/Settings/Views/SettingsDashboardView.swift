@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SettingsDashboardView: View {
     @AppStorage(AppThemeColor.storageKey) private var selectedThemeRawValue = AppThemeColor.lemon.rawValue
+    @AppStorage(ProfitColorStyle.storageKey) private var profitColorStyleRawValue = ProfitColorStyle.defaultStyle.rawValue
     @AppStorage(GoldenBucketSettings.negativeBalanceWarningKey) private var negativeBalanceWarningEnabled = true
 
     private var selectedTheme: AppThemeColor {
@@ -30,6 +31,19 @@ struct SettingsDashboardView: View {
                         }
                         .buttonStyle(.plain)
                     }
+                }
+
+                Section {
+                    Picker("收益颜色", selection: $profitColorStyleRawValue) {
+                        ForEach(ProfitColorStyle.allCases) { style in
+                            Text(style.title).tag(style.rawValue)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                } header: {
+                    Text("收益显示")
+                } footer: {
+                    Text("只影响投资收益的正负颜色，零收益保持中性。")
                 }
 
                 Section {

@@ -2,6 +2,11 @@ import SwiftUI
 
 struct PortfolioSummaryCard: View {
     let summary: PortfolioSummary
+    @AppStorage(ProfitColorStyle.storageKey) private var profitColorStyleRawValue = ProfitColorStyle.defaultStyle.rawValue
+
+    private var profitColorStyle: ProfitColorStyle {
+        ProfitColorStyle(rawValue: profitColorStyleRawValue) ?? .defaultStyle
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -12,7 +17,15 @@ struct PortfolioSummaryCard: View {
             HStack(alignment: .top) {
                 metric("投资项", "\(summary.investments.count) 项")
                 Spacer()
-                metric("总盈亏", signed(summary.totalProfit))
+                metric(
+                    "总盈亏",
+                    ProfitPresentation.text(for: summary.totalProfit),
+                    valueColor: ProfitPresentation.color(
+                        for: summary.totalProfit,
+                        style: profitColorStyle,
+                        neutralColor: MochaTheme.themeForeground
+                    )
+                )
             }
         }
         .foregroundStyle(MochaTheme.themeForeground)
@@ -22,11 +35,19 @@ struct PortfolioSummaryCard: View {
         .shadow(color: MochaTheme.yellow.opacity(0.28), radius: 16, y: 8)
     }
 
-    private func signed(_ value: Decimal) -> String { "\(value >= 0 ? "+" : "")\(CurrencyFormatting.cny(value))" }
-    private func metric(_ title: String, _ value: String, detail: String? = nil) -> some View {
+    private func metric(
+        _ title: String,
+        _ value: String,
+        valueColor: Color? = nil,
+        detail: String? = nil
+    ) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title).font(.caption2).foregroundStyle(MochaTheme.themeForeground.opacity(0.58))
-            Text(value).font(.subheadline.weight(.semibold)).lineLimit(1).minimumScaleFactor(0.7)
+            Text(value)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(valueColor ?? MochaTheme.themeForeground)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
             if let detail { Text(detail).font(.caption2.weight(.semibold)) }
         }
     }

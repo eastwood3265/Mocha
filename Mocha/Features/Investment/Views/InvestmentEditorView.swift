@@ -39,9 +39,9 @@ struct InvestmentEditorView: View {
                             TextField("可选", text: $code).textInputAutocapitalization(.characters).multilineTextAlignment(.trailing)
                         }
                     }
-                    DecimalField("持仓金额", value: $holdingAmount)
+                    AmountField("持仓金额", value: $holdingAmount)
                     if type != .cash {
-                        DecimalField("总盈亏", value: $totalProfit)
+                        AmountField("总盈亏", value: $totalProfit, allowsNegative: true)
                     }
                 }
                 Section("存放处") {
@@ -83,18 +83,5 @@ struct InvestmentEditorView: View {
             modelContext.insert(Investment(name: name.trimmingCharacters(in: .whitespacesAndNewlines), code: type == .cash ? "" : code, type: type, holdingAmount: holdingAmount, totalProfit: type == .cash ? 0 : totalProfit, note: note, storageLocation: selectedLocation))
         }
         dismiss()
-    }
-}
-
-struct DecimalField: View {
-    let title: String
-    @Binding var value: Decimal
-    init(_ title: String, value: Binding<Decimal>) { self.title = title; _value = value }
-    var body: some View {
-        LabeledContent(title) {
-            TextField("请输入", value: $value, format: .number.precision(.fractionLength(0...4)))
-                .keyboardType(.decimalPad)
-                .multilineTextAlignment(.trailing)
-        }
     }
 }

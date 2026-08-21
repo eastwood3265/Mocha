@@ -4,6 +4,11 @@ import SwiftUI
 struct InvestmentDetailView: View {
     let investment: Investment
     @State private var showingEditor = false
+    @AppStorage(ProfitColorStyle.storageKey) private var profitColorStyleRawValue = ProfitColorStyle.defaultStyle.rawValue
+
+    private var profitColorStyle: ProfitColorStyle {
+        ProfitColorStyle(rawValue: profitColorStyleRawValue) ?? .defaultStyle
+    }
 
     var body: some View {
         List {
@@ -15,7 +20,16 @@ struct InvestmentDetailView: View {
                         HStack {
                             metric("持仓金额", CurrencyFormatting.cny(investment.holdingAmount))
                             Spacer()
-                            metric("总盈亏", signed(investment.effectiveTotalProfit), alignment: .trailing)
+                            metric(
+                                "总盈亏",
+                                ProfitPresentation.text(for: investment.effectiveTotalProfit),
+                                alignment: .trailing,
+                                valueColor: ProfitPresentation.color(
+                                    for: investment.effectiveTotalProfit,
+                                    style: profitColorStyle,
+                                    neutralColor: MochaTheme.primaryText
+                                )
+                            )
                         }
                     }
                 }
@@ -41,8 +55,15 @@ struct InvestmentDetailView: View {
         .sheet(isPresented: $showingEditor) { InvestmentEditorView(investment: investment) }
     }
 
-    private func signed(_ value: Decimal) -> String { "\(value >= 0 ? "+" : "")\(CurrencyFormatting.cny(value))" }
-    private func metric(_ title: String, _ value: String, alignment: HorizontalAlignment = .leading) -> some View {
-        VStack(alignment: alignment, spacing: 4) { Text(title).font(.caption).foregroundStyle(.secondary); Text(value).font(.headline) }
+    private func metric(
+        _ title: String,
+        _ value: String,
+        alignment: HorizontalAlignment = .leading,
+        valueColor: Color = MochaTheme.primaryText
+    ) -> some View {
+        VStack(alignment: alignment, spacing: 4) {
+            Text(title).font(.caption).foregroundStyle(.secondary)
+            Text(value).font(.headline).foregroundStyle(valueColor)
+        }
     }
 }

@@ -2,6 +2,12 @@ import SwiftUI
 
 struct InvestmentRow: View {
     let investment: Investment
+    @AppStorage(ProfitColorStyle.storageKey) private var profitColorStyleRawValue = ProfitColorStyle.defaultStyle.rawValue
+
+    private var profitColorStyle: ProfitColorStyle {
+        ProfitColorStyle(rawValue: profitColorStyleRawValue) ?? .defaultStyle
+    }
+
     private var subtitle: String {
         let values = [investment.code, investment.storageLocation?.name ?? ""].filter { !$0.isEmpty }
         return values.isEmpty ? investment.type.rawValue : values.joined(separator: " · ")
@@ -24,9 +30,12 @@ struct InvestmentRow: View {
             VStack(alignment: .trailing, spacing: 5) {
                 Text(CurrencyFormatting.cny(investment.holdingAmount)).font(.headline)
                 if investment.type != .cash {
-                    Text("\(investment.effectiveTotalProfit >= 0 ? "+" : "")\(CurrencyFormatting.cny(investment.effectiveTotalProfit))")
+                    Text(ProfitPresentation.text(for: investment.effectiveTotalProfit))
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(investment.effectiveTotalProfit >= 0 ? .red : .green)
+                        .foregroundStyle(ProfitPresentation.color(
+                            for: investment.effectiveTotalProfit,
+                            style: profitColorStyle
+                        ))
                 }
             }
         }

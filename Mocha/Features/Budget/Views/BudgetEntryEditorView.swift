@@ -42,7 +42,7 @@ struct BudgetEntryEditorView: View {
                     }
                     .disabled(preselectedBudget != nil)
 
-                    DecimalField("金额", value: $amount)
+                    AmountField("金额", value: $amount)
                     DatePicker("日期", selection: $spentAt, displayedComponents: .date)
                 }
 

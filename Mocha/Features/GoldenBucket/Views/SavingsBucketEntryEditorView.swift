@@ -85,7 +85,7 @@ struct SavingsBucketEntryEditorView: View {
                     }
                     .pickerStyle(.segmented)
 
-                    DecimalField("金额", value: $amount)
+                    AmountField("金额", value: $amount)
                     DatePicker("日期", selection: $occurredAt, displayedComponents: .date)
                 }
 
