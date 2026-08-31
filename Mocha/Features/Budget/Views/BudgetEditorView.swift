@@ -40,9 +40,9 @@ struct BudgetEditorView: View {
     }
 
     private var validationMessage: String? {
-        if trimmedName.isEmpty { return "分类名称不能为空" }
+        if trimmedName.isEmpty { return "预算名称不能为空" }
         if amount < 0 { return "预算金额不能小于 0" }
-        if hasDuplicateName { return "未归档预算中已存在同名分类" }
+        if hasDuplicateName { return "未归档预算中已存在同名预算" }
         return nil
     }
 
@@ -50,8 +50,8 @@ struct BudgetEditorView: View {
         NavigationStack {
             Form {
                 Section("预算") {
-                    LabeledContent("分类名称") {
-                        TextField("例如：餐饮", text: $name)
+                    LabeledContent("预算名称") {
+                        TextField("例如：日常餐饮", text: $name)
                             .multilineTextAlignment(.trailing)
                     }
                     Picker("周期", selection: $period) {

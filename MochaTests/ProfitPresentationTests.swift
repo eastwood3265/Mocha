@@ -2,6 +2,16 @@ import XCTest
 @testable import Mocha
 
 final class ProfitPresentationTests: XCTestCase {
+    func testEveryThemeMeetsNormalTextContrastRequirement() {
+        for theme in AppThemeColor.allCases {
+            XCTAssertGreaterThanOrEqual(
+                theme.foregroundContrastRatio,
+                4.5,
+                "\(theme.title) 的主文字对比度不足"
+            )
+        }
+    }
+
     func testDefaultStyleIsRedForProfit() {
         XCTAssertEqual(ProfitColorStyle.defaultStyle, .redForProfit)
     }

@@ -21,6 +21,13 @@ struct ArchivedBudgetListView: View {
                             BudgetRow(progress: BudgetProgressCalculator.progress(for: budget, entries: entries))
                                 .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                         }
+                        .swipeActions {
+                            Button("恢复", systemImage: "arrow.uturn.backward") {
+                                budget.isArchived = false
+                                budget.updatedAt = .now
+                            }
+                            .tint(MochaTheme.yellow)
+                        }
                     }
                 }
             }

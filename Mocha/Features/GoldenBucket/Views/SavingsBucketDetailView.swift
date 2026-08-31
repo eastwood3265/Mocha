@@ -11,6 +11,7 @@ struct SavingsBucketDetailView: View {
     @State private var editingEntry: SavingsBucketEntry?
     @State private var pendingDeletion: SavingsBucketEntry?
     @State private var showingNegativeDeleteConfirmation = false
+    @State private var showingDeleteConfirmation = false
 
     private var ownedEntries: [SavingsBucketEntry] {
         entries.filter { SavingsBucketProgressCalculator.belongs($0, to: bucket) }
@@ -90,6 +91,11 @@ struct SavingsBucketDetailView: View {
                             bucket.isArchived = true
                             bucket.updatedAt = .now
                         }
+                    } else {
+                        Button("恢复金桶", systemImage: "arrow.uturn.backward") {
+                            bucket.isArchived = false
+                            bucket.updatedAt = .now
+                        }
                     }
                 } label: {
                     Label("更多", systemImage: "ellipsis.circle")
@@ -115,6 +121,14 @@ struct SavingsBucketDetailView: View {
                 )
                 Text("删除后「\(bucket.name)」余额将为 \(CurrencyFormatting.cny(projectedBalance))。")
             }
+        }
+        .alert("删除流水？", isPresented: $showingDeleteConfirmation) {
+            Button("取消", role: .cancel) { pendingDeletion = nil }
+            Button("删除", role: .destructive) {
+                if let pendingDeletion { delete(pendingDeletion) }
+            }
+        } message: {
+            Text("这笔流水会从「\(bucket.name)」中永久删除。")
         }
     }
 
@@ -175,7 +189,8 @@ struct SavingsBucketDetailView: View {
             pendingDeletion = entry
             showingNegativeDeleteConfirmation = true
         } else {
-            delete(entry)
+            pendingDeletion = entry
+            showingDeleteConfirmation = true
         }
     }
 

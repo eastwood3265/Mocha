@@ -24,9 +24,12 @@ struct GoldenBucketDashboardView: View {
 
                     if activeBuckets.isEmpty {
                         ContentUnavailableView(
-                            "暂无金桶",
-                            systemImage: "banknote",
-                            description: Text("创建一个目标，开始记录每次存入和取出。")
+                            label: { Label("暂无金桶", systemImage: "banknote") },
+                            description: { Text("创建一个目标，开始记录每次存入和取出。") },
+                            actions: {
+                                Button("创建金桶", systemImage: "plus") { showingBucketEditor = true }
+                                    .buttonStyle(.borderedProminent)
+                            }
                         )
                         .padding(.top, 44)
                     } else {

@@ -11,7 +11,9 @@ struct MochaApp: App {
                 Budget.self,
                 BudgetEntry.self,
                 SavingsBucket.self,
-                SavingsBucketEntry.self
+                SavingsBucketEntry.self,
+                ImportBatch.self,
+                FinancialTransaction.self
             )
         } catch {
             fatalError("无法创建本地数据库：\(error.localizedDescription)")
@@ -35,7 +37,7 @@ private struct MochaRootView: View {
     var body: some View {
         TabView(selection: $selection) {
             InvestmentDashboardView()
-                .tabItem { Label("投资项", systemImage: "chart.pie.fill") }
+                .tabItem { Label("投资", systemImage: "chart.pie.fill") }
                 .tag(Tab.investments)
 
             StorageLocationListView()

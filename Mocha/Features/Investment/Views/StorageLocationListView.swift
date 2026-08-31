@@ -4,14 +4,26 @@ import SwiftUI
 struct StorageLocationListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \StorageLocation.name) private var locations: [StorageLocation]
+    @Query private var investments: [Investment]
     @State private var editingLocation: StorageLocation?
     @State private var showingEditor = false
+    @State private var pendingDeletion: StorageLocation?
 
     var body: some View {
         NavigationStack {
             List {
                 if locations.isEmpty {
-                    ContentUnavailableView("暂无存放处", systemImage: "building.columns", description: Text("例如证券账户、债券平台或黄金保管位置。"))
+                    ContentUnavailableView {
+                        Label("暂无存放处", systemImage: "building.columns")
+                    } description: {
+                        Text("集中记录证券账户、基金平台和其他资产位置。")
+                    } actions: {
+                        Button("添加存放处", systemImage: "plus") {
+                            editingLocation = nil
+                            showingEditor = true
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
                 } else {
                     ForEach(locations) { location in
                         Button {
@@ -23,7 +35,9 @@ struct StorageLocationListView: View {
                                     .font(.caption).foregroundStyle(.secondary)
                             }
                         }
-                        .swipeActions { Button("删除", role: .destructive) { modelContext.delete(location) } }
+                        .swipeActions {
+                            Button("删除", role: .destructive) { pendingDeletion = location }
+                        }
                     }
                 }
             }
@@ -34,7 +48,26 @@ struct StorageLocationListView: View {
                 ToolbarItem(placement: .primaryAction) { Button("添加", systemImage: "plus") { editingLocation = nil; showingEditor = true } }
             }
             .sheet(isPresented: $showingEditor) { StorageLocationEditorView(location: editingLocation) }
+            .alert("删除存放处？", isPresented: Binding(
+                get: { pendingDeletion != nil },
+                set: { if !$0 { pendingDeletion = nil } }
+            )) {
+                Button("取消", role: .cancel) { pendingDeletion = nil }
+                Button("删除", role: .destructive) {
+                    if let pendingDeletion { modelContext.delete(pendingDeletion) }
+                    pendingDeletion = nil
+                }
+            } message: {
+                let count = pendingDeletion.map(investmentCount) ?? 0
+                Text(count == 0
+                     ? "将删除「\(pendingDeletion?.name ?? "")」，此操作无法撤销。"
+                     : "有 \(count) 个投资项关联到这里。删除后这些投资项会变为未指定存放处。")
+            }
         }
+    }
+
+    private func investmentCount(for location: StorageLocation) -> Int {
+        investments.filter { $0.storageLocation?.persistentModelID == location.persistentModelID }.count
     }
 }
 
@@ -95,11 +128,16 @@ private struct StorageLocationEditorView: View {
     }
 
     private func save() {
+        let normalizedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let normalizedInstitution = institution.trimmingCharacters(in: .whitespacesAndNewlines)
+        let normalizedAlias = accountAlias.trimmingCharacters(in: .whitespacesAndNewlines)
+        let normalizedSuffix = accountSuffix.trimmingCharacters(in: .whitespacesAndNewlines)
+        let normalizedNote = note.trimmingCharacters(in: .whitespacesAndNewlines)
         if let location {
-            location.name = name; location.type = type; location.institution = institution
-            location.accountAlias = accountAlias; location.accountSuffix = accountSuffix; location.note = note
+            location.name = normalizedName; location.type = type; location.institution = normalizedInstitution
+            location.accountAlias = normalizedAlias; location.accountSuffix = normalizedSuffix; location.note = normalizedNote
         } else {
-            modelContext.insert(StorageLocation(name: name, type: type, institution: institution, accountAlias: accountAlias, accountSuffix: accountSuffix, note: note))
+            modelContext.insert(StorageLocation(name: normalizedName, type: type, institution: normalizedInstitution, accountAlias: normalizedAlias, accountSuffix: normalizedSuffix, note: normalizedNote))
         }
         dismiss()
     }

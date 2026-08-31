@@ -9,7 +9,8 @@ struct InvestmentRow: View {
     }
 
     private var subtitle: String {
-        let values = [investment.code, investment.storageLocation?.name ?? ""].filter { !$0.isEmpty }
+        let ownership = investment.storageLocation?.name ?? investment.sourceAccountName
+        let values = [investment.code, ownership].filter { !$0.isEmpty }
         return values.isEmpty ? investment.type.rawValue : values.joined(separator: " · ")
     }
 

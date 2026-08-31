@@ -3,11 +3,14 @@ import SwiftUI
 
 struct InvestmentDashboardView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @Query(sort: \Investment.updatedAt, order: .reverse) private var investments: [Investment]
     @State private var selectedType: InvestmentType?
     @State private var showingInvestmentEditor = false
     @State private var showingRebalance = false
-    private let amountModelResetKey = "investmentAmountModelResetCompleted"
+    @State private var showingSnapshotImport = false
+    @State private var pendingSnapshotImport: PendingInvestmentImport?
+    @State private var pendingDeletion: Investment?
 
     private var filtered: [Investment] {
         guard let selectedType else { return investments }
@@ -22,7 +25,19 @@ struct InvestmentDashboardView: View {
                     typeFilter
 
                     if filtered.isEmpty {
-                        ContentUnavailableView("暂无持仓", systemImage: "tray", description: Text("添加投资项并记录当前持仓快照。"))
+                        ContentUnavailableView {
+                            Label(selectedType == nil ? "暂无持仓" : "暂无\(selectedType!.rawValue)持仓", systemImage: "tray")
+                        } description: {
+                            Text(selectedType == nil ? "手动添加投资，或导入基金持仓文件。" : "当前筛选类型下没有投资项。")
+                        } actions: {
+                            if selectedType == nil {
+                                Button("添加投资", systemImage: "plus") { showingInvestmentEditor = true }
+                                    .buttonStyle(.borderedProminent)
+                            } else {
+                                Button("查看全部") { selectedType = nil }
+                                    .buttonStyle(.bordered)
+                            }
+                        }
                             .padding(.top, 44)
                     } else {
                         ForEach(filtered) { investment in
@@ -32,7 +47,7 @@ struct InvestmentDashboardView: View {
                             .buttonStyle(.plain)
                             .contextMenu {
                                 Button("删除投资项", systemImage: "trash", role: .destructive) {
-                                    modelContext.delete(investment)
+                                    pendingDeletion = investment
                                 }
                             }
                         }
@@ -48,12 +63,39 @@ struct InvestmentDashboardView: View {
                     Button("再平衡", systemImage: "scale.3d") { showingRebalance = true }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
+                    Button("导入持仓", systemImage: "square.and.arrow.down") {
+                        pendingSnapshotImport = nil
+                        showingSnapshotImport = true
+                    }
                     Button("添加投资", systemImage: "plus") { showingInvestmentEditor = true }
                 }
             }
             .sheet(isPresented: $showingInvestmentEditor) { InvestmentEditorView() }
             .sheet(isPresented: $showingRebalance) { RebalanceView(investments: investments) }
-            .onAppear(perform: resetLegacyInvestmentsIfNeeded)
+            .sheet(isPresented: $showingSnapshotImport, onDismiss: { pendingSnapshotImport = nil }) {
+                InvestmentSnapshotImportView(pendingImport: pendingSnapshotImport)
+            }
+            .alert("删除投资项？", isPresented: Binding(
+                get: { pendingDeletion != nil },
+                set: { if !$0 { pendingDeletion = nil } }
+            )) {
+                Button("取消", role: .cancel) { pendingDeletion = nil }
+                Button("删除", role: .destructive) {
+                    if let pendingDeletion { modelContext.delete(pendingDeletion) }
+                    pendingDeletion = nil
+                }
+            } message: {
+                Text("将删除「\(pendingDeletion?.name ?? "")」及其当前持仓数据，此操作无法撤销。")
+            }
+            .onAppear {
+                presentPendingImportIfNeeded()
+            }
+            .onChange(of: scenePhase) { _, phase in
+                if phase == .active { presentPendingImportIfNeeded() }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .pendingInvestmentImportDidChange)) { _ in
+                presentPendingImportIfNeeded()
+            }
         }
         .tint(MochaTheme.primaryText)
     }
@@ -69,15 +111,12 @@ struct InvestmentDashboardView: View {
         }
     }
 
-    private func resetLegacyInvestmentsIfNeeded() {
-        guard !UserDefaults.standard.bool(forKey: amountModelResetKey) else { return }
-        investments.forEach(modelContext.delete)
-        do {
-            try modelContext.save()
-            UserDefaults.standard.set(true, forKey: amountModelResetKey)
-        } catch {
-            modelContext.rollback()
-        }
+    private func presentPendingImportIfNeeded() {
+        guard !showingSnapshotImport,
+              pendingSnapshotImport == nil,
+              let pending = PendingInvestmentImportStore.take() else { return }
+        pendingSnapshotImport = pending
+        showingSnapshotImport = true
     }
 }
 

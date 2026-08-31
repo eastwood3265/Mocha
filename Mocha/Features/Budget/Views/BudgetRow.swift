@@ -22,8 +22,9 @@ struct BudgetRow: View {
 
                 VStack(alignment: .leading, spacing: 3) {
                     Text(progress.budget.name)
-                        .font(.headline)
+                        .font(.title2.weight(.bold))
                         .foregroundStyle(MochaTheme.primaryText)
+                        .lineLimit(2)
                     Text("\(progress.budget.period.title)预算")
                         .font(.caption)
                         .foregroundStyle(.secondary)

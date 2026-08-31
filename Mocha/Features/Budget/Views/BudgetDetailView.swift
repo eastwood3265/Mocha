@@ -7,6 +7,8 @@ struct BudgetDetailView: View {
     @Query(sort: \BudgetEntry.spentAt, order: .reverse) private var entries: [BudgetEntry]
     @State private var showingBudgetEditor = false
     @State private var showingEntryEditor = false
+    @State private var editingEntry: BudgetEntry?
+    @State private var pendingDeletion: BudgetEntry?
     @State private var entryScope: EntryScope = .currentPeriod
 
     private var progress: BudgetProgress {
@@ -55,10 +57,11 @@ struct BudgetDetailView: View {
                     ContentUnavailableView("暂无支出", systemImage: "list.bullet.rectangle", description: Text("记录支出后会显示在这里。"))
                 } else {
                     ForEach(scopedEntries) { entry in
-                        BudgetEntryRow(entry: entry)
+                        Button { editingEntry = entry } label: { BudgetEntryRow(entry: entry) }
+                            .buttonStyle(.plain)
                             .swipeActions {
                                 Button("删除", systemImage: "trash", role: .destructive) {
-                                    modelContext.delete(entry)
+                                    pendingDeletion = entry
                                 }
                             }
                     }
@@ -74,10 +77,32 @@ struct BudgetDetailView: View {
                     Button("记账", systemImage: "square.and.pencil") { showingEntryEditor = true }
                 }
                 Button("编辑", systemImage: "pencil") { showingBudgetEditor = true }
+                if budget.isArchived {
+                    Button("恢复", systemImage: "arrow.uturn.backward") {
+                        budget.isArchived = false
+                        budget.updatedAt = .now
+                    }
+                }
             }
         }
         .sheet(isPresented: $showingBudgetEditor) { BudgetEditorView(budget: budget) }
         .sheet(isPresented: $showingEntryEditor) { BudgetEntryEditorView(preselectedBudget: budget) }
+        .sheet(item: $editingEntry) { BudgetEntryEditorView(entry: $0) }
+        .alert("删除支出？", isPresented: Binding(
+            get: { pendingDeletion != nil },
+            set: { if !$0 { pendingDeletion = nil } }
+        )) {
+            Button("取消", role: .cancel) { pendingDeletion = nil }
+            Button("删除", role: .destructive) {
+                if let pendingDeletion {
+                    modelContext.delete(pendingDeletion)
+                    budget.updatedAt = .now
+                }
+                pendingDeletion = nil
+            }
+        } message: {
+            Text("将删除这笔 \(CurrencyFormatting.cny(pendingDeletion?.amount ?? 0)) 的支出，此操作无法撤销。")
+        }
     }
 
     private func metric(_ title: String, _ value: String, alignment: HorizontalAlignment = .leading) -> some View {

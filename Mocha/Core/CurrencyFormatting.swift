@@ -24,16 +24,18 @@ enum AppThemeColor: String, CaseIterable, Identifiable {
         }
     }
 
-    var color: Color {
+    var backgroundComponents: ThemeRGB {
         switch self {
-        case .lemon: Color(red: 1.0, green: 0.82, blue: 0.0)
-        case .mint: Color(red: 0.35, green: 0.86, blue: 0.63)
-        case .sky: Color(red: 0.31, green: 0.68, blue: 0.96)
-        case .coral: Color(red: 1.0, green: 0.42, blue: 0.36)
-        case .black: Color(red: 0.08, green: 0.08, blue: 0.09)
-        case .white: .white
+        case .lemon: ThemeRGB(red: 0.95, green: 0.72, blue: 0.08)
+        case .mint: ThemeRGB(red: 0.32, green: 0.78, blue: 0.57)
+        case .sky: ThemeRGB(red: 0.38, green: 0.70, blue: 0.94)
+        case .coral: ThemeRGB(red: 0.94, green: 0.43, blue: 0.38)
+        case .black: ThemeRGB(red: 0.08, green: 0.08, blue: 0.09)
+        case .white: ThemeRGB(red: 0.97, green: 0.97, blue: 0.98)
         }
     }
+
+    var color: Color { backgroundComponents.color }
 
     var softColor: Color {
         switch self {
@@ -46,11 +48,54 @@ enum AppThemeColor: String, CaseIterable, Identifiable {
         }
     }
 
-    var foregroundColor: Color {
+    var foregroundComponents: ThemeRGB {
         switch self {
-        case .black: .white
-        default: MochaTheme.primaryText
+        case .lemon: ThemeRGB(red: 0.08, green: 0.07, blue: 0.04)
+        case .mint: ThemeRGB(red: 0.04, green: 0.10, blue: 0.07)
+        case .sky: ThemeRGB(red: 0.04, green: 0.08, blue: 0.12)
+        case .coral: ThemeRGB(red: 0.12, green: 0.04, blue: 0.03)
+        case .black: ThemeRGB(red: 1, green: 1, blue: 1)
+        case .white: ThemeRGB(red: 0.08, green: 0.08, blue: 0.09)
         }
+    }
+
+    var foregroundColor: Color { foregroundComponents.color }
+
+    var secondaryForegroundColor: Color {
+        switch self {
+        case .lemon: ThemeRGB(red: 0.20, green: 0.16, blue: 0.06).color
+        case .mint: ThemeRGB(red: 0.08, green: 0.24, blue: 0.16).color
+        case .sky: ThemeRGB(red: 0.07, green: 0.20, blue: 0.30).color
+        case .coral: ThemeRGB(red: 0.28, green: 0.08, blue: 0.06).color
+        case .black: ThemeRGB(red: 0.78, green: 0.78, blue: 0.80).color
+        case .white: ThemeRGB(red: 0.27, green: 0.27, blue: 0.30).color
+        }
+    }
+
+    var foregroundContrastRatio: Double {
+        backgroundComponents.contrastRatio(with: foregroundComponents)
+    }
+}
+
+struct ThemeRGB {
+    let red: Double
+    let green: Double
+    let blue: Double
+
+    var color: Color { Color(red: red, green: green, blue: blue) }
+
+    func contrastRatio(with other: ThemeRGB) -> Double {
+        let lighter = max(relativeLuminance, other.relativeLuminance)
+        let darker = min(relativeLuminance, other.relativeLuminance)
+        return (lighter + 0.05) / (darker + 0.05)
+    }
+
+    private var relativeLuminance: Double {
+        0.2126 * linear(red) + 0.7152 * linear(green) + 0.0722 * linear(blue)
+    }
+
+    private func linear(_ value: Double) -> Double {
+        value <= 0.04045 ? value / 12.92 : pow((value + 0.055) / 1.055, 2.4)
     }
 }
 
@@ -63,13 +108,9 @@ enum MochaTheme {
     static var yellow: Color { selectedThemeColor.color }
     static var softYellow: Color { selectedThemeColor.softColor }
     static var themeForeground: Color { selectedThemeColor.foregroundColor }
+    static var themeSecondaryForeground: Color { selectedThemeColor.secondaryForegroundColor }
     static var themeBorder: Color {
-        switch selectedThemeColor {
-        case .white:
-            secondaryText.opacity(0.25)
-        default:
-            selectedThemeColor.color.opacity(0.18)
-        }
+        selectedThemeColor.foregroundColor.opacity(selectedThemeColor == .white ? 0.28 : 0.20)
     }
     static let background = Color.white
     static let primaryText = Color(red: 0.10, green: 0.10, blue: 0.11)

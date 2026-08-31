@@ -6,18 +6,20 @@ struct BudgetEntryEditorView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Budget.name) private var budgets: [Budget]
     let preselectedBudget: Budget?
+    let entry: BudgetEntry?
 
     @State private var selectedBudget: Budget?
     @State private var amount: Decimal
     @State private var spentAt: Date
     @State private var note: String
 
-    init(preselectedBudget: Budget? = nil) {
+    init(preselectedBudget: Budget? = nil, entry: BudgetEntry? = nil) {
         self.preselectedBudget = preselectedBudget
-        _selectedBudget = State(initialValue: preselectedBudget)
-        _amount = State(initialValue: 0)
-        _spentAt = State(initialValue: .now)
-        _note = State(initialValue: "")
+        self.entry = entry
+        _selectedBudget = State(initialValue: entry?.budget ?? preselectedBudget)
+        _amount = State(initialValue: entry?.amount ?? 0)
+        _spentAt = State(initialValue: entry?.spentAt ?? .now)
+        _note = State(initialValue: entry?.note ?? "")
     }
 
     private var activeBudgets: [Budget] {
@@ -39,8 +41,11 @@ struct BudgetEntryEditorView: View {
                         ForEach(activeBudgets) { budget in
                             Text("\(budget.name) · \(budget.period.title)").tag(Optional(budget))
                         }
+                        if let selectedBudget, selectedBudget.isArchived {
+                            Text("\(selectedBudget.name) · 已归档").tag(Optional(selectedBudget))
+                        }
                     }
-                    .disabled(preselectedBudget != nil)
+                    .disabled(preselectedBudget != nil || entry != nil)
 
                     AmountField("金额", value: $amount)
                     DatePicker("日期", selection: $spentAt, displayedComponents: .date)
@@ -60,7 +65,7 @@ struct BudgetEntryEditorView: View {
             }
             .scrollContentBackground(.hidden)
             .background(MochaTheme.background)
-            .navigationTitle("记一笔")
+            .navigationTitle(entry == nil ? "记一笔" : "编辑支出")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -76,12 +81,21 @@ struct BudgetEntryEditorView: View {
 
     private func save() {
         guard let selectedBudget else { return }
-        modelContext.insert(BudgetEntry(
-            budget: selectedBudget,
-            amount: amount,
-            spentAt: spentAt,
-            note: note.trimmingCharacters(in: .whitespacesAndNewlines)
-        ))
+        let normalizedNote = note.trimmingCharacters(in: .whitespacesAndNewlines)
+        if let entry {
+            entry.amount = amount
+            entry.spentAt = spentAt
+            entry.note = normalizedNote
+            entry.updatedAt = .now
+        } else {
+            modelContext.insert(BudgetEntry(
+                budget: selectedBudget,
+                amount: amount,
+                spentAt: spentAt,
+                note: normalizedNote
+            ))
+        }
+        selectedBudget.updatedAt = .now
         dismiss()
     }
 }

@@ -36,9 +36,30 @@ struct InvestmentDetailView: View {
                 .padding(.vertical, 8)
             }
 
+            Section("基本信息") {
+                LabeledContent("类型", value: investment.type.rawValue)
+                if !investment.code.isEmpty {
+                    LabeledContent("代码", value: investment.code)
+                }
+                if let snapshotAt = investment.snapshotAt {
+                    LabeledContent("数据日期") {
+                        Text(snapshotAt, format: .dateTime.year().month().day())
+                    }
+                }
+            }
+
             if let location = investment.storageLocation {
                 Section("存放处") {
                     LabeledContent(location.name, value: [location.institution, location.accountAlias].filter { !$0.isEmpty }.joined(separator: " · "))
+                }
+            }
+
+            if !investment.dataSourceIdentifier.isEmpty {
+                Section("数据来源") {
+                    LabeledContent("来源", value: investment.dataSourceName)
+                    if !investment.sourceAccountName.isEmpty {
+                        LabeledContent("销售渠道或账户", value: investment.sourceAccountName)
+                    }
                 }
             }
 

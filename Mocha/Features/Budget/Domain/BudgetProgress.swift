@@ -17,6 +17,18 @@ struct BudgetProgress {
 }
 
 enum BudgetProgressCalculator {
+    static func spent(
+        for budget: Budget,
+        on date: Date,
+        entries: [BudgetEntry],
+        calendar: Calendar = .current
+    ) -> Decimal {
+        guard let interval = calendar.dateInterval(of: .day, for: date) else { return .zero }
+        return entries
+            .filter { isSameBudget($0.budget, budget) && interval.containsHalfOpen($0.spentAt) }
+            .reduce(Decimal.zero) { $0 + $1.amount }
+    }
+
     static func progress(
         for budget: Budget,
         entries: [BudgetEntry],

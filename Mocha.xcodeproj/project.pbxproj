@@ -7,20 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B00100000000000000000009 /* ArchivedBudgetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000009 /* ArchivedBudgetListView.swift */; };
+		23379E2716D4C225D811DDC8 /* PortfolioSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5DC6ED4DCA96D02EB27AE1 /* PortfolioSummary.swift */; };
+		38AADE5A6A7B1453A89ED6DA /* RebalancePlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0375D1CACC99480D38B3D707 /* RebalancePlannerTests.swift */; };
+		4203F3999F3949864A0B956E /* StorageLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10C03E7000BFBECED0D51D /* StorageLocation.swift */; };
+		51CD647BD966490673AF83DB /* RebalancePlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542256A4B8F1E4B46B4BDF2 /* RebalancePlanner.swift */; };
+		54BF4E126C303F7A90CD2962 /* InvestmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D84934C72754736602AE29 /* InvestmentType.swift */; };
+		5778DD522F0AAE66E152F534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8E36229557F2687A151534D /* Assets.xcassets */; };
+		5B22E092F7DB38BA7B6A3F64 /* RebalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE2E0FEE05C687BD31736E6 /* RebalanceView.swift */; };
+		5D4F5A0F9AFB8D535F8260B1 /* MochaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B871CFFABFDEA1187B2DFD4D /* MochaApp.swift */; };
+		5E771C47720E1EDFC848764A /* CurrencyFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672C046EFC412E0AC219AFD7 /* CurrencyFormatting.swift */; };
+		78899323FB683F6280AB0034 /* PortfolioSummaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7080E4FC98D393F472F7E5 /* PortfolioSummaryTests.swift */; };
+		7D2985FBE1EBF6890A5FD5FB /* StorageLocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91E19838E2D7DEFC6AC2FE0 /* StorageLocationListView.swift */; };
+		7E03AA53F492915A4CAA5040 /* LabeledNoteEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B27018ABB959A9790C1BFA /* LabeledNoteEditor.swift */; };
+		9BCF3528AFBED44240661CE8 /* InvestmentDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0126F37E1CA5CF147DB0406 /* InvestmentDashboardView.swift */; };
+		A12EC6840F55704FED601A0B /* InvestmentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB724EC6D4C25AB2295F0A /* InvestmentRow.swift */; };
+		A90100000000000000000001 /* SettingsDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90200000000000000000001 /* SettingsDashboardView.swift */; };
+		AB2A0C89FCA28EB16BF7CC19 /* Investment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7AC3AA52AFE2F563495ECD /* Investment.swift */; };
+		B00100000000000000000001 /* BudgetPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000001 /* BudgetPeriod.swift */; };
 		B00100000000000000000002 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000002 /* Budget.swift */; };
+		B00100000000000000000003 /* BudgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000003 /* BudgetEntry.swift */; };
+		B00100000000000000000004 /* BudgetProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000004 /* BudgetProgress.swift */; };
 		B00100000000000000000005 /* BudgetDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000005 /* BudgetDashboardView.swift */; };
 		B00100000000000000000006 /* BudgetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000006 /* BudgetDetailView.swift */; };
 		B00100000000000000000007 /* BudgetEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000007 /* BudgetEditorView.swift */; };
-		B00100000000000000000003 /* BudgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000003 /* BudgetEntry.swift */; };
 		B00100000000000000000008 /* BudgetEntryEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000008 /* BudgetEntryEditorView.swift */; };
-		B00100000000000000000004 /* BudgetProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000004 /* BudgetProgress.swift */; };
-		B0010000000000000000000D /* BudgetProgressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0020000000000000000000D /* BudgetProgressTests.swift */; };
-		B00100000000000000000001 /* BudgetPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000001 /* BudgetPeriod.swift */; };
-		B0010000000000000000000C /* BudgetPeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0020000000000000000000C /* BudgetPeriodTests.swift */; };
+		B00100000000000000000009 /* ArchivedBudgetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000009 /* ArchivedBudgetListView.swift */; };
 		B0010000000000000000000A /* BudgetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0020000000000000000000A /* BudgetRow.swift */; };
 		B0010000000000000000000B /* BudgetSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0020000000000000000000B /* BudgetSummaryCard.swift */; };
-		A90100000000000000000001 /* SettingsDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90200000000000000000001 /* SettingsDashboardView.swift */; };
+		B0010000000000000000000C /* BudgetPeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0020000000000000000000C /* BudgetPeriodTests.swift */; };
+		B0010000000000000000000D /* BudgetProgressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0020000000000000000000D /* BudgetProgressTests.swift */; };
+		BE44B1613566639994B355D2 /* PortfolioSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC9216741437E997E59DE0 /* PortfolioSummaryCard.swift */; };
 		C10100000000000000000001 /* SavingsBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10200000000000000000001 /* SavingsBucket.swift */; };
 		C10100000000000000000002 /* SavingsBucketEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10200000000000000000002 /* SavingsBucketEntry.swift */; };
 		C10100000000000000000003 /* SavingsBucketProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10200000000000000000003 /* SavingsBucketProgress.swift */; };
@@ -37,26 +53,42 @@
 		D10100000000000000000002 /* ProfitPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10200000000000000000002 /* ProfitPresentation.swift */; };
 		D10400000000000000000001 /* AmountInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10500000000000000000001 /* AmountInputFormatterTests.swift */; };
 		D10400000000000000000002 /* ProfitPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10500000000000000000002 /* ProfitPresentationTests.swift */; };
-		23379E2716D4C225D811DDC8 /* PortfolioSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5DC6ED4DCA96D02EB27AE1 /* PortfolioSummary.swift */; };
-		38AADE5A6A7B1453A89ED6DA /* RebalancePlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0375D1CACC99480D38B3D707 /* RebalancePlannerTests.swift */; };
-		4203F3999F3949864A0B956E /* StorageLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10C03E7000BFBECED0D51D /* StorageLocation.swift */; };
-		51CD647BD966490673AF83DB /* RebalancePlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542256A4B8F1E4B46B4BDF2 /* RebalancePlanner.swift */; };
-		54BF4E126C303F7A90CD2962 /* InvestmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D84934C72754736602AE29 /* InvestmentType.swift */; };
-		5778DD522F0AAE66E152F534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8E36229557F2687A151534D /* Assets.xcassets */; };
-		5B22E092F7DB38BA7B6A3F64 /* RebalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE2E0FEE05C687BD31736E6 /* RebalanceView.swift */; };
-		5D4F5A0F9AFB8D535F8260B1 /* MochaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B871CFFABFDEA1187B2DFD4D /* MochaApp.swift */; };
-		5E771C47720E1EDFC848764A /* CurrencyFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672C046EFC412E0AC219AFD7 /* CurrencyFormatting.swift */; };
-		78899323FB683F6280AB0034 /* PortfolioSummaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7080E4FC98D393F472F7E5 /* PortfolioSummaryTests.swift */; };
-		7D2985FBE1EBF6890A5FD5FB /* StorageLocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91E19838E2D7DEFC6AC2FE0 /* StorageLocationListView.swift */; };
-		7E03AA53F492915A4CAA5040 /* LabeledNoteEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B27018ABB959A9790C1BFA /* LabeledNoteEditor.swift */; };
-		9BCF3528AFBED44240661CE8 /* InvestmentDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0126F37E1CA5CF147DB0406 /* InvestmentDashboardView.swift */; };
-		A12EC6840F55704FED601A0B /* InvestmentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB724EC6D4C25AB2295F0A /* InvestmentRow.swift */; };
-		AB2A0C89FCA28EB16BF7CC19 /* Investment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7AC3AA52AFE2F563495ECD /* Investment.swift */; };
-		BE44B1613566639994B355D2 /* PortfolioSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC9216741437E997E59DE0 /* PortfolioSummaryCard.swift */; };
 		D2E212A1CF6D79B8EFA26C38 /* InvestmentEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F57A733A5FAB7C701AE9E57 /* InvestmentEditorView.swift */; };
+		E20100000000000000000001 /* ImportDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20200000000000000000001 /* ImportDomain.swift */; };
+		E20100000000000000000002 /* InvestmentProfitMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20200000000000000000002 /* InvestmentProfitMetric.swift */; };
+		E20100000000000000000003 /* ImportedInvestmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20200000000000000000003 /* ImportedInvestmentSnapshot.swift */; };
+		E20100000000000000000004 /* InvestmentSnapshotImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20200000000000000000004 /* InvestmentSnapshotImporter.swift */; };
+		E20100000000000000000005 /* InvestmentSnapshotImportError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20200000000000000000005 /* InvestmentSnapshotImportError.swift */; };
+		E20100000000000000000006 /* NormalizedInvestmentSnapshotCSVImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20200000000000000000006 /* NormalizedInvestmentSnapshotCSVImporter.swift */; };
+		E20100000000000000000007 /* InvestmentSnapshotImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20200000000000000000007 /* InvestmentSnapshotImportService.swift */; };
+		E20100000000000000000008 /* InvestmentSnapshotImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20200000000000000000008 /* InvestmentSnapshotImportView.swift */; };
+		E20100000000000000000009 /* InvestmentSnapshotPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20200000000000000000009 /* InvestmentSnapshotPreviewView.swift */; };
+		E2010000000000000000000A /* InvestmentSnapshotImporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2020000000000000000000A /* InvestmentSnapshotImporterTests.swift */; };
+		E2010000000000000000000B /* InvestmentSnapshotImportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2020000000000000000000B /* InvestmentSnapshotImportServiceTests.swift */; };
+		E20400000000000000000001 /* FundEAccountSnapshotImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20500000000000000000001 /* FundEAccountSnapshotImporter.swift */; };
+		E20400000000000000000002 /* XLSXTableReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20500000000000000000002 /* XLSXTableReader.swift */; };
+		E20400000000000000000003 /* CoreXLSX in Frameworks */ = {isa = PBXBuildFile; productRef = E20700000000000000000001 /* CoreXLSX */; };
+		E20900000000000000000001 /* FundImportAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A00000000000000000001 /* FundImportAppIntent.swift */; };
+		E20900000000000000000002 /* PendingInvestmentImportStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A00000000000000000002 /* PendingInvestmentImportStore.swift */; };
+		E20900000000000000000003 /* WeeklyFundSyncReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A00000000000000000003 /* WeeklyFundSyncReminder.swift */; };
 		E319C8E836B50F0B59A3CA0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A8547DB258578B7324EE48E /* InfoPlist.strings */; };
 		E3A8195F254334E77EAE5D80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60FD0283ABE42DC778792A72 /* InfoPlist.strings */; };
 		FD9B11AE2A05ACFC811978B0 /* InvestmentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7890447FC590B50797517C /* InvestmentDetailView.swift */; };
+		SI0100000000000000000001 /* TransactionSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI0200000000000000000001 /* TransactionSource.swift */; };
+		SI0100000000000000000002 /* ImportBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI0200000000000000000002 /* ImportBatch.swift */; };
+		SI0100000000000000000003 /* FinancialTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI0200000000000000000003 /* FinancialTransaction.swift */; };
+		SI0100000000000000000004 /* ImportedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI0200000000000000000004 /* ImportedTransaction.swift */; };
+		SI0100000000000000000005 /* StatementImportError.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI0200000000000000000005 /* StatementImportError.swift */; };
+		SI0100000000000000000006 /* CSVDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI0200000000000000000006 /* CSVDocument.swift */; };
+		SI0100000000000000000007 /* StatementImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI0200000000000000000007 /* StatementImporter.swift */; };
+		SI0100000000000000000008 /* AlipayStatementImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI0200000000000000000008 /* AlipayStatementImporter.swift */; };
+		SI0100000000000000000009 /* WeChatStatementImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI0200000000000000000009 /* WeChatStatementImporter.swift */; };
+		SI010000000000000000000A /* StatementImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI020000000000000000000A /* StatementImportService.swift */; };
+		SI010000000000000000000B /* StatementImportDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI020000000000000000000B /* StatementImportDashboardView.swift */; };
+		SI010000000000000000000C /* StatementImportPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI020000000000000000000C /* StatementImportPreviewView.swift */; };
+		SI010000000000000000000D /* StatementParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI020000000000000000000D /* StatementParserTests.swift */; };
+		SI010000000000000000000E /* StatementImportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI020000000000000000000E /* StatementImportServiceTests.swift */; };
+		SI010000000000000000000F /* StatementExportGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SI020000000000000000000F /* StatementExportGuideView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +115,23 @@
 		7A5DC6ED4DCA96D02EB27AE1 /* PortfolioSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSummary.swift; sourceTree = "<group>"; };
 		8A8547DB258578B7324EE48E /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		A90200000000000000000001 /* SettingsDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDashboardView.swift; sourceTree = "<group>"; };
+		AB10C03E7000BFBECED0D51D /* StorageLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageLocation.swift; sourceTree = "<group>"; };
+		B00200000000000000000001 /* BudgetPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPeriod.swift; sourceTree = "<group>"; };
+		B00200000000000000000002 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
+		B00200000000000000000003 /* BudgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEntry.swift; sourceTree = "<group>"; };
+		B00200000000000000000004 /* BudgetProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetProgress.swift; sourceTree = "<group>"; };
+		B00200000000000000000005 /* BudgetDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDashboardView.swift; sourceTree = "<group>"; };
+		B00200000000000000000006 /* BudgetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailView.swift; sourceTree = "<group>"; };
+		B00200000000000000000007 /* BudgetEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEditorView.swift; sourceTree = "<group>"; };
+		B00200000000000000000008 /* BudgetEntryEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEntryEditorView.swift; sourceTree = "<group>"; };
+		B00200000000000000000009 /* ArchivedBudgetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedBudgetListView.swift; sourceTree = "<group>"; };
+		B0020000000000000000000A /* BudgetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetRow.swift; sourceTree = "<group>"; };
+		B0020000000000000000000B /* BudgetSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetSummaryCard.swift; sourceTree = "<group>"; };
+		B0020000000000000000000C /* BudgetPeriodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPeriodTests.swift; sourceTree = "<group>"; };
+		B0020000000000000000000D /* BudgetProgressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetProgressTests.swift; sourceTree = "<group>"; };
+		B0126F37E1CA5CF147DB0406 /* InvestmentDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentDashboardView.swift; sourceTree = "<group>"; };
+		B871CFFABFDEA1187B2DFD4D /* MochaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MochaApp.swift; sourceTree = "<group>"; };
+		B91E19838E2D7DEFC6AC2FE0 /* StorageLocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageLocationListView.swift; sourceTree = "<group>"; };
 		C10200000000000000000001 /* SavingsBucket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsBucket.swift; sourceTree = "<group>"; };
 		C10200000000000000000002 /* SavingsBucketEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsBucketEntry.swift; sourceTree = "<group>"; };
 		C10200000000000000000003 /* SavingsBucketProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsBucketProgress.swift; sourceTree = "<group>"; };
@@ -95,34 +144,59 @@
 		C1020000000000000000000A /* SavingsBucketRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsBucketRow.swift; sourceTree = "<group>"; };
 		C10500000000000000000001 /* SavingsBucketProgressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsBucketProgressTests.swift; sourceTree = "<group>"; };
 		C10500000000000000000002 /* SavingsBucketPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsBucketPersistenceTests.swift; sourceTree = "<group>"; };
+		CD7080E4FC98D393F472F7E5 /* PortfolioSummaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSummaryTests.swift; sourceTree = "<group>"; };
+		CDE2E0FEE05C687BD31736E6 /* RebalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebalanceView.swift; sourceTree = "<group>"; };
 		D10200000000000000000001 /* AmountField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountField.swift; sourceTree = "<group>"; };
 		D10200000000000000000002 /* ProfitPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitPresentation.swift; sourceTree = "<group>"; };
 		D10500000000000000000001 /* AmountInputFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputFormatterTests.swift; sourceTree = "<group>"; };
 		D10500000000000000000002 /* ProfitPresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitPresentationTests.swift; sourceTree = "<group>"; };
-		AB10C03E7000BFBECED0D51D /* StorageLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageLocation.swift; sourceTree = "<group>"; };
-		B0126F37E1CA5CF147DB0406 /* InvestmentDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentDashboardView.swift; sourceTree = "<group>"; };
-		B871CFFABFDEA1187B2DFD4D /* MochaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MochaApp.swift; sourceTree = "<group>"; };
-		B91E19838E2D7DEFC6AC2FE0 /* StorageLocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageLocationListView.swift; sourceTree = "<group>"; };
-		B00200000000000000000009 /* ArchivedBudgetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedBudgetListView.swift; sourceTree = "<group>"; };
-		B00200000000000000000002 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
-		B00200000000000000000005 /* BudgetDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDashboardView.swift; sourceTree = "<group>"; };
-		B00200000000000000000006 /* BudgetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailView.swift; sourceTree = "<group>"; };
-		B00200000000000000000007 /* BudgetEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEditorView.swift; sourceTree = "<group>"; };
-		B00200000000000000000003 /* BudgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEntry.swift; sourceTree = "<group>"; };
-		B00200000000000000000008 /* BudgetEntryEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEntryEditorView.swift; sourceTree = "<group>"; };
-		B00200000000000000000004 /* BudgetProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetProgress.swift; sourceTree = "<group>"; };
-		B0020000000000000000000D /* BudgetProgressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetProgressTests.swift; sourceTree = "<group>"; };
-		B00200000000000000000001 /* BudgetPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPeriod.swift; sourceTree = "<group>"; };
-		B0020000000000000000000C /* BudgetPeriodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPeriodTests.swift; sourceTree = "<group>"; };
-		B0020000000000000000000A /* BudgetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetRow.swift; sourceTree = "<group>"; };
-		B0020000000000000000000B /* BudgetSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetSummaryCard.swift; sourceTree = "<group>"; };
-		CD7080E4FC98D393F472F7E5 /* PortfolioSummaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSummaryTests.swift; sourceTree = "<group>"; };
-		CDE2E0FEE05C687BD31736E6 /* RebalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebalanceView.swift; sourceTree = "<group>"; };
 		D542256A4B8F1E4B46B4BDF2 /* RebalancePlanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebalancePlanner.swift; sourceTree = "<group>"; };
 		D8E36229557F2687A151534D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEFEE528A6E9A3C9B23A5E32 /* MochaTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MochaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E20200000000000000000001 /* ImportDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDomain.swift; sourceTree = "<group>"; };
+		E20200000000000000000002 /* InvestmentProfitMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentProfitMetric.swift; sourceTree = "<group>"; };
+		E20200000000000000000003 /* ImportedInvestmentSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportedInvestmentSnapshot.swift; sourceTree = "<group>"; };
+		E20200000000000000000004 /* InvestmentSnapshotImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentSnapshotImporter.swift; sourceTree = "<group>"; };
+		E20200000000000000000005 /* InvestmentSnapshotImportError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentSnapshotImportError.swift; sourceTree = "<group>"; };
+		E20200000000000000000006 /* NormalizedInvestmentSnapshotCSVImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalizedInvestmentSnapshotCSVImporter.swift; sourceTree = "<group>"; };
+		E20200000000000000000007 /* InvestmentSnapshotImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentSnapshotImportService.swift; sourceTree = "<group>"; };
+		E20200000000000000000008 /* InvestmentSnapshotImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentSnapshotImportView.swift; sourceTree = "<group>"; };
+		E20200000000000000000009 /* InvestmentSnapshotPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentSnapshotPreviewView.swift; sourceTree = "<group>"; };
+		E2020000000000000000000A /* InvestmentSnapshotImporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentSnapshotImporterTests.swift; sourceTree = "<group>"; };
+		E2020000000000000000000B /* InvestmentSnapshotImportServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentSnapshotImportServiceTests.swift; sourceTree = "<group>"; };
+		E20500000000000000000001 /* FundEAccountSnapshotImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundEAccountSnapshotImporter.swift; sourceTree = "<group>"; };
+		E20500000000000000000002 /* XLSXTableReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLSXTableReader.swift; sourceTree = "<group>"; };
+		E20A00000000000000000001 /* FundImportAppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundImportAppIntent.swift; sourceTree = "<group>"; };
+		E20A00000000000000000002 /* PendingInvestmentImportStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingInvestmentImportStore.swift; sourceTree = "<group>"; };
+		E20A00000000000000000003 /* WeeklyFundSyncReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyFundSyncReminder.swift; sourceTree = "<group>"; };
 		F8ECFE4CFCA132B344CE8568 /* Mocha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mocha.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		SI0200000000000000000001 /* TransactionSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSource.swift; sourceTree = "<group>"; };
+		SI0200000000000000000002 /* ImportBatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportBatch.swift; sourceTree = "<group>"; };
+		SI0200000000000000000003 /* FinancialTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialTransaction.swift; sourceTree = "<group>"; };
+		SI0200000000000000000004 /* ImportedTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportedTransaction.swift; sourceTree = "<group>"; };
+		SI0200000000000000000005 /* StatementImportError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementImportError.swift; sourceTree = "<group>"; };
+		SI0200000000000000000006 /* CSVDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDocument.swift; sourceTree = "<group>"; };
+		SI0200000000000000000007 /* StatementImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementImporter.swift; sourceTree = "<group>"; };
+		SI0200000000000000000008 /* AlipayStatementImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlipayStatementImporter.swift; sourceTree = "<group>"; };
+		SI0200000000000000000009 /* WeChatStatementImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChatStatementImporter.swift; sourceTree = "<group>"; };
+		SI020000000000000000000A /* StatementImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementImportService.swift; sourceTree = "<group>"; };
+		SI020000000000000000000B /* StatementImportDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementImportDashboardView.swift; sourceTree = "<group>"; };
+		SI020000000000000000000C /* StatementImportPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementImportPreviewView.swift; sourceTree = "<group>"; };
+		SI020000000000000000000D /* StatementParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementParserTests.swift; sourceTree = "<group>"; };
+		SI020000000000000000000E /* StatementImportServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementImportServiceTests.swift; sourceTree = "<group>"; };
+		SI020000000000000000000F /* StatementExportGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementExportGuideView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E20600000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E20400000000000000000003 /* CoreXLSX in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0C6D474D7BDD761D8FA97B74 /* Features */ = {
@@ -132,6 +206,8 @@
 				C10300000000000000000001 /* GoldenBucket */,
 				DDF3A7F6E83B80C01D3B50FF /* Investment */,
 				A90300000000000000000001 /* Settings */,
+				SI0300000000000000000001 /* StatementImport */,
+				E20300000000000000000001 /* InvestmentImport */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -139,6 +215,7 @@
 		24AAD9D6C90DFDB6D2EFEB17 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				E20A00000000000000000001 /* FundImportAppIntent.swift */,
 				B871CFFABFDEA1187B2DFD4D /* MochaApp.swift */,
 			);
 			path = App;
@@ -148,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				0E7AC3AA52AFE2F563495ECD /* Investment.swift */,
+				E20200000000000000000002 /* InvestmentProfitMetric.swift */,
 				30D84934C72754736602AE29 /* InvestmentType.swift */,
 				7A5DC6ED4DCA96D02EB27AE1 /* PortfolioSummary.swift */,
 				D542256A4B8F1E4B46B4BDF2 /* RebalancePlanner.swift */,
@@ -204,63 +282,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		C10300000000000000000001 /* GoldenBucket */ = {
-			isa = PBXGroup;
-			children = (
-				C10300000000000000000002 /* Domain */,
-				C10300000000000000000003 /* Views */,
-			);
-			path = GoldenBucket;
-			sourceTree = "<group>";
-		};
-		C10300000000000000000002 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				C10200000000000000000001 /* SavingsBucket.swift */,
-				C10200000000000000000002 /* SavingsBucketEntry.swift */,
-				C10200000000000000000003 /* SavingsBucketProgress.swift */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		C10300000000000000000003 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C10200000000000000000004 /* ArchivedSavingsBucketListView.swift */,
-				C10200000000000000000005 /* GoldenBucketDashboardView.swift */,
-				C10200000000000000000006 /* GoldenBucketSummaryCard.swift */,
-				C10200000000000000000007 /* SavingsBucketDetailView.swift */,
-				C10200000000000000000008 /* SavingsBucketEditorView.swift */,
-				C10200000000000000000009 /* SavingsBucketEntryEditorView.swift */,
-				C1020000000000000000000A /* SavingsBucketRow.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		BF634220E6E5211D86A9496B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F8ECFE4CFCA132B344CE8568 /* Mocha.app */,
-				DEFEE528A6E9A3C9B23A5E32 /* MochaTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		C462259D1D5B79E6DD1ED25D /* MochaTests */ = {
-			isa = PBXGroup;
-			children = (
-				D10500000000000000000001 /* AmountInputFormatterTests.swift */,
-				B0020000000000000000000D /* BudgetProgressTests.swift */,
-				B0020000000000000000000C /* BudgetPeriodTests.swift */,
-				CD7080E4FC98D393F472F7E5 /* PortfolioSummaryTests.swift */,
-				D10500000000000000000002 /* ProfitPresentationTests.swift */,
-				0375D1CACC99480D38B3D707 /* RebalancePlannerTests.swift */,
-				C10500000000000000000002 /* SavingsBucketPersistenceTests.swift */,
-				C10500000000000000000001 /* SavingsBucketProgressTests.swift */,
-			);
-			path = MochaTests;
-			sourceTree = "<group>";
-		};
 		B00300000000000000000001 /* Budget */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +316,67 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		BF634220E6E5211D86A9496B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F8ECFE4CFCA132B344CE8568 /* Mocha.app */,
+				DEFEE528A6E9A3C9B23A5E32 /* MochaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C10300000000000000000001 /* GoldenBucket */ = {
+			isa = PBXGroup;
+			children = (
+				C10300000000000000000002 /* Domain */,
+				C10300000000000000000003 /* Views */,
+			);
+			path = GoldenBucket;
+			sourceTree = "<group>";
+		};
+		C10300000000000000000002 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				C10200000000000000000001 /* SavingsBucket.swift */,
+				C10200000000000000000002 /* SavingsBucketEntry.swift */,
+				C10200000000000000000003 /* SavingsBucketProgress.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		C10300000000000000000003 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C10200000000000000000004 /* ArchivedSavingsBucketListView.swift */,
+				C10200000000000000000005 /* GoldenBucketDashboardView.swift */,
+				C10200000000000000000006 /* GoldenBucketSummaryCard.swift */,
+				C10200000000000000000007 /* SavingsBucketDetailView.swift */,
+				C10200000000000000000008 /* SavingsBucketEditorView.swift */,
+				C10200000000000000000009 /* SavingsBucketEntryEditorView.swift */,
+				C1020000000000000000000A /* SavingsBucketRow.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C462259D1D5B79E6DD1ED25D /* MochaTests */ = {
+			isa = PBXGroup;
+			children = (
+				D10500000000000000000001 /* AmountInputFormatterTests.swift */,
+				B0020000000000000000000D /* BudgetProgressTests.swift */,
+				B0020000000000000000000C /* BudgetPeriodTests.swift */,
+				CD7080E4FC98D393F472F7E5 /* PortfolioSummaryTests.swift */,
+				D10500000000000000000002 /* ProfitPresentationTests.swift */,
+				0375D1CACC99480D38B3D707 /* RebalancePlannerTests.swift */,
+				C10500000000000000000002 /* SavingsBucketPersistenceTests.swift */,
+				C10500000000000000000001 /* SavingsBucketProgressTests.swift */,
+				SI020000000000000000000D /* StatementParserTests.swift */,
+				SI020000000000000000000E /* StatementImportServiceTests.swift */,
+				E2020000000000000000000A /* InvestmentSnapshotImporterTests.swift */,
+				E2020000000000000000000B /* InvestmentSnapshotImportServiceTests.swift */,
+			);
+			path = MochaTests;
+			sourceTree = "<group>";
+		};
 		DDF3A7F6E83B80C01D3B50FF /* Investment */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +384,48 @@
 				F064A0B2FC2886352A783C55 /* Views */,
 			);
 			path = Investment;
+			sourceTree = "<group>";
+		};
+		E20300000000000000000001 /* InvestmentImport */ = {
+			isa = PBXGroup;
+			children = (
+				E20300000000000000000002 /* Domain */,
+				E20300000000000000000003 /* Services */,
+				E20300000000000000000004 /* Views */,
+			);
+			path = InvestmentImport;
+			sourceTree = "<group>";
+		};
+		E20300000000000000000002 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E20200000000000000000003 /* ImportedInvestmentSnapshot.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		E20300000000000000000003 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E20500000000000000000001 /* FundEAccountSnapshotImporter.swift */,
+				E20200000000000000000005 /* InvestmentSnapshotImportError.swift */,
+				E20200000000000000000007 /* InvestmentSnapshotImportService.swift */,
+				E20200000000000000000004 /* InvestmentSnapshotImporter.swift */,
+				E20200000000000000000006 /* NormalizedInvestmentSnapshotCSVImporter.swift */,
+				E20A00000000000000000002 /* PendingInvestmentImportStore.swift */,
+				E20A00000000000000000003 /* WeeklyFundSyncReminder.swift */,
+				E20500000000000000000002 /* XLSXTableReader.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E20300000000000000000004 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E20200000000000000000008 /* InvestmentSnapshotImportView.swift */,
+				E20200000000000000000009 /* InvestmentSnapshotPreviewView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		EF807D5A989C41CBA5301E32 = {
@@ -327,6 +451,51 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		SI0300000000000000000001 /* StatementImport */ = {
+			isa = PBXGroup;
+			children = (
+				SI0300000000000000000002 /* Domain */,
+				SI0300000000000000000003 /* Services */,
+				SI0300000000000000000004 /* Views */,
+			);
+			path = StatementImport;
+			sourceTree = "<group>";
+		};
+		SI0300000000000000000002 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				SI0200000000000000000003 /* FinancialTransaction.swift */,
+				E20200000000000000000001 /* ImportDomain.swift */,
+				SI0200000000000000000002 /* ImportBatch.swift */,
+				SI0200000000000000000004 /* ImportedTransaction.swift */,
+				SI0200000000000000000001 /* TransactionSource.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		SI0300000000000000000003 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				SI0200000000000000000008 /* AlipayStatementImporter.swift */,
+				SI0200000000000000000006 /* CSVDocument.swift */,
+				SI0200000000000000000005 /* StatementImportError.swift */,
+				SI020000000000000000000A /* StatementImportService.swift */,
+				SI0200000000000000000007 /* StatementImporter.swift */,
+				SI0200000000000000000009 /* WeChatStatementImporter.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		SI0300000000000000000004 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				SI020000000000000000000B /* StatementImportDashboardView.swift */,
+				SI020000000000000000000C /* StatementImportPreviewView.swift */,
+				SI020000000000000000000F /* StatementExportGuideView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -335,6 +504,7 @@
 			buildConfigurationList = 8F0335E3AD17DA2C71C4EE6A /* Build configuration list for PBXNativeTarget "Mocha" */;
 			buildPhases = (
 				C821D32FDDAB02E24348E1E1 /* Sources */,
+				E20600000000000000000001 /* Frameworks */,
 				7AAABD8E7C2C1C261CFC6C6A /* Resources */,
 			);
 			buildRules = (
@@ -343,6 +513,7 @@
 			);
 			name = Mocha;
 			packageProductDependencies = (
+				E20700000000000000000001 /* CoreXLSX */,
 			);
 			productName = Mocha;
 			productReference = F8ECFE4CFCA132B344CE8568 /* Mocha.app */;
@@ -391,6 +562,9 @@
 			);
 			mainGroup = EF807D5A989C41CBA5301E32;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E20800000000000000000001 /* XCRemoteSwiftPackageReference "CoreXLSX" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BF634220E6E5211D86A9496B /* Products */;
 			projectDirPath = "";
@@ -428,6 +602,10 @@
 				38AADE5A6A7B1453A89ED6DA /* RebalancePlannerTests.swift in Sources */,
 				C10400000000000000000002 /* SavingsBucketPersistenceTests.swift in Sources */,
 				C10400000000000000000001 /* SavingsBucketProgressTests.swift in Sources */,
+				SI010000000000000000000D /* StatementParserTests.swift in Sources */,
+				SI010000000000000000000E /* StatementImportServiceTests.swift in Sources */,
+				E2010000000000000000000A /* InvestmentSnapshotImporterTests.swift in Sources */,
+				E2010000000000000000000B /* InvestmentSnapshotImportServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +652,33 @@
 				A90100000000000000000001 /* SettingsDashboardView.swift in Sources */,
 				4203F3999F3949864A0B956E /* StorageLocation.swift in Sources */,
 				7D2985FBE1EBF6890A5FD5FB /* StorageLocationListView.swift in Sources */,
+				SI0100000000000000000001 /* TransactionSource.swift in Sources */,
+				SI0100000000000000000002 /* ImportBatch.swift in Sources */,
+				SI0100000000000000000003 /* FinancialTransaction.swift in Sources */,
+				SI0100000000000000000004 /* ImportedTransaction.swift in Sources */,
+				SI0100000000000000000005 /* StatementImportError.swift in Sources */,
+				SI0100000000000000000006 /* CSVDocument.swift in Sources */,
+				SI0100000000000000000007 /* StatementImporter.swift in Sources */,
+				SI0100000000000000000008 /* AlipayStatementImporter.swift in Sources */,
+				SI0100000000000000000009 /* WeChatStatementImporter.swift in Sources */,
+				SI010000000000000000000A /* StatementImportService.swift in Sources */,
+				SI010000000000000000000B /* StatementImportDashboardView.swift in Sources */,
+				SI010000000000000000000C /* StatementImportPreviewView.swift in Sources */,
+				SI010000000000000000000F /* StatementExportGuideView.swift in Sources */,
+				E20100000000000000000001 /* ImportDomain.swift in Sources */,
+				E20100000000000000000002 /* InvestmentProfitMetric.swift in Sources */,
+				E20100000000000000000003 /* ImportedInvestmentSnapshot.swift in Sources */,
+				E20100000000000000000004 /* InvestmentSnapshotImporter.swift in Sources */,
+				E20100000000000000000005 /* InvestmentSnapshotImportError.swift in Sources */,
+				E20100000000000000000006 /* NormalizedInvestmentSnapshotCSVImporter.swift in Sources */,
+				E20100000000000000000007 /* InvestmentSnapshotImportService.swift in Sources */,
+				E20100000000000000000008 /* InvestmentSnapshotImportView.swift in Sources */,
+				E20100000000000000000009 /* InvestmentSnapshotPreviewView.swift in Sources */,
+				E20400000000000000000001 /* FundEAccountSnapshotImporter.swift in Sources */,
+				E20400000000000000000002 /* XLSXTableReader.swift in Sources */,
+				E20900000000000000000001 /* FundImportAppIntent.swift in Sources */,
+				E20900000000000000000002 /* PendingInvestmentImportStore.swift in Sources */,
+				E20900000000000000000003 /* WeeklyFundSyncReminder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,9 +714,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AS4SD8AP56;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Mocha;
+				INFOPLIST_KEY_CFBundleShortVersionString = "$(MARKETING_VERSION)";
+				INFOPLIST_KEY_CFBundleVersion = "$(CURRENT_PROJECT_VERSION)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -519,6 +727,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eastwood.mocha;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -603,9 +812,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AS4SD8AP56;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Mocha;
+				INFOPLIST_KEY_CFBundleShortVersionString = "$(MARKETING_VERSION)";
+				INFOPLIST_KEY_CFBundleVersion = "$(CURRENT_PROJECT_VERSION)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -613,6 +825,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eastwood.mocha;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -714,6 +927,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E20800000000000000000001 /* XCRemoteSwiftPackageReference "CoreXLSX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CoreOffice/CoreXLSX.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E20700000000000000000001 /* CoreXLSX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E20800000000000000000001 /* XCRemoteSwiftPackageReference "CoreXLSX" */;
+			productName = CoreXLSX;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 100427A4E0D70E42773A3C6C /* Project object */;
 }

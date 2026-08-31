@@ -4,6 +4,8 @@ struct SettingsDashboardView: View {
     @AppStorage(AppThemeColor.storageKey) private var selectedThemeRawValue = AppThemeColor.lemon.rawValue
     @AppStorage(ProfitColorStyle.storageKey) private var profitColorStyleRawValue = ProfitColorStyle.defaultStyle.rawValue
     @AppStorage(GoldenBucketSettings.negativeBalanceWarningKey) private var negativeBalanceWarningEnabled = true
+    @AppStorage(WeeklyFundSyncReminder.enabledKey) private var weeklyFundSyncReminderEnabled = false
+    @State private var reminderError: String?
 
     private var selectedTheme: AppThemeColor {
         AppThemeColor(rawValue: selectedThemeRawValue) ?? .lemon
@@ -12,6 +14,33 @@ struct SettingsDashboardView: View {
     var body: some View {
         NavigationStack {
             List {
+                Section("数据") {
+                    NavigationLink {
+                        StatementImportDashboardView()
+                    } label: {
+                        Label("账单导入", systemImage: "doc.text.magnifyingglass")
+                    }
+                }
+
+                Section {
+                    Toggle("每周基金同步提醒", isOn: $weeklyFundSyncReminderEnabled)
+                        .tint(MochaTheme.yellow)
+                        .onChange(of: weeklyFundSyncReminderEnabled) { _, enabled in
+                            Task {
+                                do {
+                                    try await WeeklyFundSyncReminder.setEnabled(enabled)
+                                } catch {
+                                    weeklyFundSyncReminderEnabled = false
+                                    reminderError = error.localizedDescription
+                                }
+                            }
+                        }
+                } header: {
+                    Text("基金同步")
+                } footer: {
+                    Text("每周日 20:00 提醒从基金 E 账户导出持仓。邮件收到 XLSX 后，可用快捷指令中的“导入基金持仓”交给 Mocha 预览。")
+                }
+
                 Section("主题色") {
                     ForEach(AppThemeColor.allCases) { theme in
                         Button {
@@ -60,6 +89,14 @@ struct SettingsDashboardView: View {
             .navigationTitle("设置")
         }
         .tint(MochaTheme.primaryText)
+        .alert("无法开启提醒", isPresented: Binding(
+            get: { reminderError != nil },
+            set: { if !$0 { reminderError = nil } }
+        )) {
+            Button("知道了", role: .cancel) {}
+        } message: {
+            Text(reminderError ?? "未知错误")
+        }
     }
 }
 
@@ -67,11 +104,14 @@ private struct ThemeColorSwatch: View {
     let theme: AppThemeColor
 
     var body: some View {
-        Circle()
-            .fill(theme.color)
-            .frame(width: 24, height: 24)
+        Text("Aa")
+            .font(.caption2.bold())
+            .foregroundStyle(theme.foregroundColor)
+            .frame(width: 34, height: 26)
+            .background(theme.color, in: RoundedRectangle(cornerRadius: 7, style: .continuous))
             .overlay {
-                Circle().stroke(borderColor, lineWidth: 1)
+                RoundedRectangle(cornerRadius: 7, style: .continuous)
+                    .stroke(borderColor, lineWidth: 1)
             }
     }
 
@@ -80,9 +120,9 @@ private struct ThemeColorSwatch: View {
         case .white:
             MochaTheme.secondaryText.opacity(0.35)
         case .black:
-            MochaTheme.secondaryText.opacity(0.22)
+            theme.foregroundColor.opacity(0.28)
         default:
-            theme.color.opacity(0.55)
+            theme.foregroundColor.opacity(0.20)
         }
     }
 }

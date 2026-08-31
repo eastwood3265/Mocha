@@ -8,14 +8,14 @@ struct GoldenBucketSummaryCard: View {
         VStack(alignment: .leading, spacing: 16) {
             Text("金桶总余额")
                 .font(.subheadline)
-                .foregroundStyle(MochaTheme.themeForeground.opacity(0.62))
+                .foregroundStyle(MochaTheme.themeSecondaryForeground)
             Text(CurrencyFormatting.cny(summary.totalBalance))
                 .font(.system(size: 34, weight: .bold, design: .rounded))
                 .foregroundStyle(summary.totalBalance < 0 ? .red : MochaTheme.themeForeground)
                 .lineLimit(1)
                 .minimumScaleFactor(0.65)
 
-            Divider().overlay(MochaTheme.themeForeground.opacity(0.12))
+            Divider().overlay(MochaTheme.themeForeground.opacity(0.24))
 
             HStack(alignment: .top) {
                 metric("进行中", "\(bucketCount) 个桶")
@@ -49,7 +49,7 @@ struct GoldenBucketSummaryCard: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
                 .font(.caption2)
-                .foregroundStyle(MochaTheme.themeForeground.opacity(0.58))
+                .foregroundStyle(MochaTheme.themeSecondaryForeground)
             Text(value)
                 .font(.subheadline.weight(.semibold))
         }

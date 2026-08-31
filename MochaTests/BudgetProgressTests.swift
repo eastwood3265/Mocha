@@ -106,6 +106,23 @@ final class BudgetProgressTests: XCTestCase {
         )
     }
 
+    func testDailySpentOnlyCountsSelectedCalendarDayAndBudget() throws {
+        let calendar = makeCalendar()
+        let food = Budget(name: "餐饮", amount: 1_000, period: .monthly)
+        let travel = Budget(name: "旅行", amount: 12_000, period: .yearly)
+        let selectedDate = try date(2026, 8, 12, calendar: calendar)
+        let entries = [
+            BudgetEntry(budget: food, amount: 30, spentAt: selectedDate),
+            BudgetEntry(budget: food, amount: 50, spentAt: try date(2026, 8, 13, calendar: calendar)),
+            BudgetEntry(budget: travel, amount: 200, spentAt: selectedDate)
+        ]
+
+        XCTAssertEqual(
+            BudgetProgressCalculator.spent(for: food, on: selectedDate, entries: entries, calendar: calendar),
+            30
+        )
+    }
+
     private func makeCalendar() -> Calendar {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = TimeZone(secondsFromGMT: 8 * 60 * 60)!

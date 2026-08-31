@@ -27,6 +27,13 @@ struct ArchivedSavingsBucketListView: View {
                             )
                             .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                         }
+                        .swipeActions {
+                            Button("恢复", systemImage: "arrow.uturn.backward") {
+                                bucket.isArchived = false
+                                bucket.updatedAt = .now
+                            }
+                            .tint(MochaTheme.yellow)
+                        }
                     }
                 }
             }

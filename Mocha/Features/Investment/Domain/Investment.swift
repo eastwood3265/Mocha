@@ -9,9 +9,15 @@ final class Investment {
     var holdingAmount: Decimal = 0
     var totalProfit: Decimal = 0
     var note: String
+    var externalProductID: String = ""
+    var dataSourceIdentifier: String = ""
+    var sourceAccountName: String = ""
+    var snapshotAt: Date?
+    var profitMetricRawValue: String = InvestmentProfitMetric.unspecified.rawValue
     var createdAt: Date
     var updatedAt: Date
     var storageLocation: StorageLocation?
+    var lastImportBatch: ImportBatch?
 
     var type: InvestmentType {
         get { InvestmentType(rawValue: typeRawValue) ?? .bond }
@@ -22,6 +28,22 @@ final class Investment {
     }
 
     var effectiveTotalProfit: Decimal { type == .cash ? 0 : totalProfit }
+
+    var dataSourceName: String {
+        switch dataSourceIdentifier {
+        case "investment.tencent-licaitong": "腾讯理财通"
+        case "investment.ant-wealth": "蚂蚁财富"
+        case "investment.efunds": "易方达"
+        case "investment.fund-e-account": "基金 E 账户"
+        case "investment.mixed": "多个平台"
+        default: dataSourceIdentifier
+        }
+    }
+
+    var profitMetric: InvestmentProfitMetric {
+        get { InvestmentProfitMetric(rawValue: profitMetricRawValue) ?? .unspecified }
+        set { profitMetricRawValue = newValue.rawValue }
+    }
 
     init(
         name: String,

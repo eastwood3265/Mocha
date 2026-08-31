@@ -5,6 +5,7 @@ enum StorageLocationType: String, Codable, CaseIterable, Identifiable {
     case brokerage = "证券账户"
     case bondPlatform = "债券平台"
     case bank = "银行"
+    case fundPlatform = "基金平台"
     case physical = "实物保管"
     case other = "其他"
 

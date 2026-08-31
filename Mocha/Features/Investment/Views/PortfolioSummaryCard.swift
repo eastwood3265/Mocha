@@ -10,10 +10,10 @@ struct PortfolioSummaryCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("持仓金额").font(.subheadline).foregroundStyle(MochaTheme.themeForeground.opacity(0.62))
+            Text("持仓金额").font(.subheadline).foregroundStyle(MochaTheme.themeSecondaryForeground)
             Text(CurrencyFormatting.cny(summary.holdingAmount))
                 .font(.system(size: 34, weight: .bold, design: .rounded))
-            Divider().overlay(MochaTheme.themeForeground.opacity(0.12))
+            Divider().overlay(MochaTheme.themeForeground.opacity(0.24))
             HStack(alignment: .top) {
                 metric("投资项", "\(summary.investments.count) 项")
                 Spacer()
@@ -42,7 +42,7 @@ struct PortfolioSummaryCard: View {
         detail: String? = nil
     ) -> some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(title).font(.caption2).foregroundStyle(MochaTheme.themeForeground.opacity(0.58))
+            Text(title).font(.caption2).foregroundStyle(MochaTheme.themeSecondaryForeground)
             Text(value)
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(valueColor ?? MochaTheme.themeForeground)
